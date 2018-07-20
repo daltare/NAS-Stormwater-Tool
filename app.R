@@ -188,14 +188,14 @@
         # Calculate statistics for each site/parameter combination, and filter for the selected number of samples per site and range of results
             map.data <- reactive({
                 filtered.data() %>%
+                    dplyr::filter(if(is.na(input$min.selected)) {TRUE} else {RESULT >= input$min.selected}) %>%
+                    dplyr::filter(if(is.na(input$max.selected)) {TRUE} else {RESULT <= input$max.selected}) %>%                    
                     dplyr::group_by(WDID) %>% 
                     dplyr::summarize(max.value = max(RESULT, na.rm = TRUE), number.samples = n()) %>% # calculate summary statistics for each site
                     dplyr::filter(number.samples >= input$count.selected) %>% # filter for the minimum number of samples
                     dplyr::right_join(facilities, by = 'WDID') %>% # join the calculated statistics to the more detailed facility information
                     dplyr::filter(!is.na(max.value)) %>%  # filter out all sites where there is no summary statistic
-                    dplyr::filter(max.value != -Inf) %>%  # -Inf is returned when all taking the max of a set of results that are all NAs
-                    dplyr::filter(if(is.na(input$min.selected)) {TRUE} else {max.value >= input$min.selected}) %>%
-                    dplyr::filter(if(is.na(input$max.selected)) {TRUE} else {max.value <= input$max.selected})
+                    dplyr::filter(max.value != -Inf)  # -Inf is returned when all taking the max of a set of results that are all NAs
             })
             
         # Get the facilities with samples in the filtered.data dataset
