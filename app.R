@@ -65,31 +65,30 @@
 # ----------------------------------------------------------------------------------------------------------------------------------------------- #       
 # ----------------------------------------------------------------------------------------------------------------------------------------------- #
 # Define UI --------------------------------------------------------------------
-    ui <- navbarPage(title = "Industrial Stormwater Effluent Water Quality Assessment Tool", # theme = shinythemes::shinytheme('flatly'),
+    ui <- navbarPage(title = "Industrial Stormwater Effluent Water Quality Assessment Tool          ", # theme = shinythemes::shinytheme('flatly'),
                      tabPanel('Home',
                               h3('Background:'),
                               p('This draft version of the Industrial Stormwater Assessment Tool is intended to summarize statewide industrial stormwater quality 
                                 monitoring data reported to the ',
-                                tags$a(href = 'https://www.waterboards.ca.gov/','California State Water Resources Control Board'), '. It computes the median of 
-                                the results at each facility for a selected parameter, and displays the computed scores on a map and in tabular format.'),
+                                tags$a(href = 'https://www.waterboards.ca.gov/','California State Water Resources Control Board'), '. It computes basic summary statistics
+                                for each regulated facility for a selected parameter, and displays the summary statistics on a map and in tabular format.'),
                               # ('on the ', 
-                              # tags$em('WQI Scores', class = 'linkstyle', onclick = "fakeClick('WQI Scores')"), 
+                              # tags$em('Sampling Summary', class = 'linkstyle', onclick = "fakeClick('Sampling Summary')"), 
                               # ' tab).'),
                               #br(),
                               hr(), #style="border: 1px solid darkgrey"),
                               #br(),
                               h3('Instructions:'),
-                              p('In general, you will view and interact with the data through the WQI Scores tab.'), 
+                              p('In general, you will view and interact with the data through the', tags$b(em('Sampling Summary')),' tab.'), 
                               tags$ul(
-                                  tags$li(tags$u(tags$b('WQI Scores:')),'The panel on the left side of this tab contains a menu with inputs that can be used to customize the WQI scores calcualted and 
-                              displayed in the map, and in the corresponding data table below the map. Use the inputs in the menu to select a Water Board Region, 
-                              Year, and Standard to apply in computing the WQI scores. You can also filter for sites whose computed WQI scores fall 
-                              within a given range, sites which fall within CES tracts with a given range of scores for a selected CES parameter, 
-                              and/or sites that are within a given proximity to 303(d) waterbodies. Within the map, you can select the background 
-                              map and toggle layers on or off, through the menu in the upper right corner of the map. You can also view and download 
-                              the a tabular summary of the WQI scores in the table below the map.'),
+                                  tags$li(tags$u(tags$b('Sampling Summary:')),'The panel on the left side of this tab contains a menu with inputs that can be used to filter 
+                              the data used in calculating the summary statistics displayed in the map and in the corresponding data table below the map. Use the filters in the menu to select a 
+                              parameter,  Water Board Region, and sample date range to apply in computing the summary statistics. You can also require a minimum number of samples to use in 
+                              calculating the summary statistics, and filter our sample results that fall outside of a selected range. Within the map, you can select the background 
+                              layer and toggle layers on or off, through the menu in the upper right corner of the map. You can also view and download 
+                              a tabular summary of the summary statistics in the table below the map.'),
                                   tags$li(tags$u(tags$b('Additional Data:')), 
-                                          'Contains links to download the complete set of sampling data and facility information considered in computing the median values.'),
+                                          'Contains links to download the complete set of sampling data and facility information considered in computing the summary statistics.'),
                                   tags$li(tags$u(tags$b('More Information:', class = 'linkstyle')), 
                                           tags$ul(
                                               tags$li(tags$u(tags$b('Data Sources:')),
@@ -228,10 +227,10 @@
                                                      myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
                                                      })
                                                      }")
-                # Set the bounds of the map dynamically - initial view is based on the full extent of the WQI score points for the selected region, after that the map is based on the most recent bounds when a new option (standard, period, etc) is selected
+                # Set the bounds of the map dynamically - initial view is based on the full extent of the points for the selected region, after that the map is based on the most recent bounds when a new option (standard, period, etc) is selected
                     # isolate(if (is.null(input$monitoring.map_bounds)) {
                     #     l <- l %>% leaflet::fitBounds(lng1 = bounds[[1]], lat1 = bounds[[2]], lng2 = bounds[[3]], lat2 = bounds[[4]])
-                    #     # l <- l %>% leaflet::fitBounds(lng1 = min(monitoring.data.WQI$Longitude, na.rm = TRUE), lat1 = min(monitoring.data.WQI$Latitude, na.rm = TRUE), lng2 = max(monitoring.data.WQI$Longitude, na.rm = TRUE), lat2 = max(monitoring.data.WQI$Latitude, na.rm = TRUE))
+                    #     # l <- l %>% leaflet::fitBounds(lng1 = min(monitoring.data$Longitude, na.rm = TRUE), lat1 = min(monitoring.data$Latitude, na.rm = TRUE), lng2 = max(monitoring.data$Longitude, na.rm = TRUE), lat2 = max(monitoring.data$Latitude, na.rm = TRUE))
                     # } else { # maintain the current view
                     #     l <- l %>% leaflet::setView(lng = mean(c(input$monitoring.map_bounds$west, input$monitoring.map_bounds$east)), lat = mean(c(input$monitoring.map_bounds$north, input$monitoring.map_bounds$south)), zoom = input$monitoring.map_zoom)                                
                     # })
@@ -300,7 +299,7 @@
                                              lng = ~FACILITY_LONGITUDE,
                                              stroke = TRUE, weight = 0.5, color = 'black', opacity = 1,
                                              fill = TRUE, fillOpacity = 1, 
-                                             fillColor = ~ results.leaflet.pal()(max.value),   # wqi.leaflet.pal(WQI),
+                                             fillColor = ~ results.leaflet.pal()(max.value),   # leaflet.pal(wq),
                                              popup = ~paste0('<b>', '<u>', 'Facility Information:', '</u>', '</b>','<br/>',
                                                              '<b>', 'WDID: ', '</b>', WDID,'<br/>',
                                                              '<b>', 'Facility Name: ', '</b>', FACILITY_NAME,'<br/>',
@@ -370,8 +369,8 @@
                 options = list(dom = 'Bfrtip', 
                                buttons = list('colvis', list(
                                    extend = 'collection',
-                                   buttons = list(list(extend='csv', filename = 'WQI_Scores'),
-                                                  list(extend='excel', filename= 'WQI_Scores')),
+                                   buttons = list(list(extend='csv', filename = 'Industrial_Stormwater_Monitoring_Summary_Statistics'),
+                                                  list(extend='excel', filename= 'Industrial_Stormwater_Monitoring_Summary_Statistics')),
                                    text = 'Download Data' )),
                                scrollX = TRUE,
                                scrollY = 250, 
