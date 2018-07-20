@@ -112,8 +112,7 @@
                                   dateRangeInput(inputId = 'dates.selected', label = 'Sample Date Range:', start = min.date, end = max.date, min = min.date, max = max.date),
                                   sliderInput(inputId = 'count.selected', label = 'Minimum Number of Samples:', min = 0, max = 100, value = 0),
                                   numericInput(inputId = 'min.selected', label = 'Minimum Value:', value = NULL),
-                                  numericInput(inputId = 'max.selected', label = 'Maximum Value:', value = NULL),
-                                  textOutput('min.max')
+                                  numericInput(inputId = 'max.selected', label = 'Maximum Value:', value = NULL)
                               ),
                               mainPanel( # Show map and data table
                                   # h4('Water Quality Monitoring Results:'),
@@ -163,13 +162,13 @@
                                        ' package for the R programming language. The source code for this tool is available here:',  '  '),
                                      actionButton(inputId = 'github', label = 'Code on GitHub', icon = icon('github', class = 'fa-1x'),
                                                   class = 'buttonstyle',
-                                                  onclick ="window.open('https://github.com/daltare/Stormwater_Enforcement_Tool')"),
+                                                  onclick ="window.open('https://github.com/daltare/NAS-Stormwater-Tool')"),
                                      br(), br(),
                                      h4('Feedback and Questions:'),
                                      p('For quesitons or comments about this tool, you can send an email to: ', 
                                        a(href = 'mailto:david.altare@waterboards.ca.gov', 'david.altare@waterboards.ca.gov'),
                                        p('Alternatively, you can ',
-                                         a(href = 'https://github.com/daltare/Stormwater_Enforcement_Tool/issues', 'open an issue on this project\'s GitHub page'),
+                                         a(href = 'https://github.com/daltare/NAS-Stormwater-Tool/issues', 'open an issue on this project\'s GitHub page'),
                                          'to request a new feature, note a bug, or leave any other comments about the tool. Feedback is appreciated!'))
                             )
                             )
@@ -182,26 +181,14 @@
                 monitoring.data %>%
                     dplyr::filter(if(input$parameter.selected == '') {PARAMETER == 'Nothing'} else {PARAMETER == input$parameter.selected}) %>% # if no parameter is selected, no data is returned (all is filtered out)
                     dplyr::filter(if(input$region.selected == 'All Regions' | input$region.selected == '') {TRUE} else {Region_calc == input$region.selected} ) %>% # if all regions are selected or a selection is not made, don't filter out any data (i.e. the TRUE statement); otherwise, filter for data in the selected region
-                    dplyr::filter(SAMPLE_DATE >= input$dates.selected[1]) %>% 
-                    dplyr::filter(SAMPLE_DATE <= input$dates.selected[2]) # %>% 
-                    # dplyr::group_by(WDID) %>% # group the data by facility
-                    # dplyr::summarize(max.value = max(RESULT, na.rm = TRUE), number.samples = n()) %>% # calculate summary statistics for each site
-                    # dplyr::filter(number.samples >= input$count.selected) %>% # filter for the minimum number of samples
-                    # dplyr::right_join(facilities, by = 'WDID') %>% # join the calculated statistics to the more detailed facility information
-                    # dplyr::filter(!is.na(max.value)) %>%  # filter out all sites where there is no summary statistic
-                    # dplyr::filter(max.value != -Inf) %>%  # -Inf is returned when all taking the max of a set of results that are all NAs
-                    # dplyr::filter(if(is.na(input$min.selected)) {TRUE} else {max.value >= input$min.selected}) %>%
-                    # dplyr::filter(if(is.na(input$max.selected)) {TRUE} else {max.value <= input$max.selected})
+                    dplyr::filter(SAMPLE_DATE >= input$dates.selected[1]) %>% # filter for the min sample date
+                    dplyr::filter(SAMPLE_DATE <= input$dates.selected[2]) # filter for the max sample date
             })
         
         # Calculate statistics for each site/parameter combination, and filter for the selected number of samples per site and range of results
             map.data <- reactive({
                 filtered.data() %>%
-                    # dplyr::filter(if(input$parameter.selected == '') {PARAMETER == 'Nothing'} else {PARAMETER == input$parameter.selected}) %>% # if no parameter is selected, no data is returned (all is filtered out)
-                    # dplyr::filter(if(input$region.selected == 'All Regions' | input$region.selected == '') {TRUE} else {Region_calc == input$region.selected} ) %>% # if all regions are selected or a selection is not made, don't filter out any data (i.e. the TRUE statement); otherwise, filter for data in the selected region
-                    # dplyr::filter(SAMPLE_DATE >= input$dates.selected[1]) %>% 
-                    # dplyr::filter(SAMPLE_DATE <= input$dates.selected[2]) %>% 
-                    dplyr::group_by(WDID) %>% # group the data by facility
+                    dplyr::group_by(WDID) %>% 
                     dplyr::summarize(max.value = max(RESULT, na.rm = TRUE), number.samples = n()) %>% # calculate summary statistics for each site
                     dplyr::filter(number.samples >= input$count.selected) %>% # filter for the minimum number of samples
                     dplyr::right_join(facilities, by = 'WDID') %>% # join the calculated statistics to the more detailed facility information
@@ -215,21 +202,6 @@
             facilities.filtered <- reactive({
                 facilities %>% 
                     dplyr::filter(WDID %in% filtered.data()$WDID)
-            })
-            
-            # map.data.min <- reactive({min(map.data()$max.value)})
-            # map.data.max <- reactive({max(map.data()$max.value)})
-            # 
-            # output$min.max <- renderText({
-            #     paste0('Min: ', map.data.min(), ' | Max: ', map.data.max())
-            # })
-            
-            observe({
-                map.data.min <- min(map.data()$max.value)
-                map.data.max <- max(map.data()$max.value)
-                output$min.max <- renderText({
-                    paste0('Min: ', map.data.min, ' | Max: ', map.data.max, ' | ', input$min.selected, '----', input$max.selected)
-                })
             })
         
         # Create the shared map data (for the crosstalk package - links the map with the data table) ----
