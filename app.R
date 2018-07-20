@@ -12,7 +12,7 @@
         # rm(mon.temp)
         # names(monitoring.data) <- make.names(names(monitoring.data))
         # read from saved file
-            monitoring.data <- readr::read_csv(file = 'C:\\David\\Stormwater\\_SMARTS_Data_Download_Automation\\Industrial_Ad_Hoc_Reports_-_Parameter_Data_2018-07-16.csv')
+            monitoring.data <- readr::read_csv(file = 'data/Industrial_Ad_Hoc_Reports_-_Parameter_Data_2018-07-19.csv')
     # facilities
         # fac.temp <- tempfile()
         # download.file(url = 'https://data.ca.gov/node/2171/download', destfile = fac.temp, method = 'libcurl')
@@ -21,7 +21,7 @@
         # rm(fac.temp)
         # names(facilities) <- make.names(names(facilities))
         # read from saved file
-            facilities <- readr::read_csv(file = 'C:\\David\\Stormwater\\_SMARTS_Data_Download_Automation\\Industrial_Application_Specific_Data_2018-07-16.csv')
+            facilities <- readr::read_csv(file = 'data/Industrial_Application_Specific_Data_2018-07-19.csv')
         
     # filter the monitoring data so that it only includes effluent data
         monitoring.data <- monitoring.data %>% dplyr::filter(MONITORING_LOCATION_TYPE == 'Effluent Monitoring')
