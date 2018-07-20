@@ -1,0 +1,438 @@
+PARAMETER
+"Lead, Total"
+"Zinc, Total"
+Oil and Grease
+pH
+Total Suspended Solids (TSS)
+"Iron, Total Recoverable"
+"Aluminum, Total Recoverable"
+"Lead, Total Recoverable"
+"Aluminum, Total"
+"Iron, Total"
+"Petroleum Hydrocarbons, Total"
+Chemical Oxygen Demand (COD)
+"2,3,4,6,7,8-Hexachlorodibenzofuran"
+"1,2,3,4,6,7,8,9-Octachlorodibenzo-p-dioxin"
+"1,2,3,6,7,8-Hexachlorodibenzofuran"
+"1,2,3,6,7,8-Hexachlorodibenzo-p-dioxin"
+"1,2,3,4,7,8-Hexachlorodibenzofuran"
+"1,2,3,4,7,8-Hexachlorodibenzo-p-dioxin"
+"1,2,3,7,8-Pentachlorodibenzo-p-dioxin"
+"1,2,3,7,8-Pentachlorodibenzofuran"
+"2,3,7,8-Tetrachlorodibenzofuran"
+"2,3,7,8-TCDD (Dioxin)"
+"1,2,3,4,6,7,8,9-Octachlorodibenzofuran"
+"1,2,3,4,7,8,9-Heptachlorodibenzofuran"
+"2,3,4,7,8-Pentachlorodibenzofuran"
+"1,2,3,7,8,9-Hexachlorodibenzo-p-dioxin"
+"1,2,3,7,8,9-Hexachlorodibenzofuran"
+"1,2,3,4,6,7,8-Heptachlorodibenzo-p-dioxin"
+"1,2,3,4,6,7,8-Heptachlorodibenzofuran"
+"Copper, Total"
+Tannin and Lignin
+Pentachlorophenol
+"2,4,6-Trichlorophenol"
+"2,3,4,6-Tetrachlorophenol"
+"2,3,4,5-Tetrachlorophenol"
+"Phenol, Single Compound"
+Electrical Conductivity @ 25 Deg. C
+Biochemical Oxygen Demand (BOD) (5-day @ 20 Deg. C)
+"Lead, Dissolved"
+"Copper, Dissolved"
+Total Dissolved Solids (TDS)
+"Cadmium, Total"
+"Zinc, Dissolved"
+"Cadmium, Dissolved"
+"Mercury, Total"
+"Nitrite, Total (as N)"
+"Nitrate, Total (as N)"
+Total Organic Carbon (TOC)
+Settleable Solids
+Nitrite Plus Nitrate (as N)
+Propiconazole
+"Phosphate, Total (as P)"
+"Phosphorus, Total (as P)"
+Chloride
+"Nitrate, Total (as NO3)"
+TPH as Motor Oil
+Diesel Oil
+"Arsenic, Total"
+"Phenols, Chlorinated"
+"Chromium, Dissolved"
+Turbidity
+Temperature
+Chromium (VI)
+"Manganese, Dissolved"
+"Nickel, Dissolved"
+"Total Organic Carbon (TOC), Percent Removal"
+Ethylbenzene
+Tert-Amyl Methyl Ether (TAME)
+Toluene
+"m,p-Xylenes"
+o-Xylene
+Tert-Butyl Alcohol (TBA)
+Ethyl-Tert Butyl Ether (ETBE)
+Gasoline
+Methyl Tert-butyl Ether (MTBE)
+Benzene
+"Hydrocarbons, Total Petroleum"
+"Zinc, Total Recoverable"
+"Xylenes, Total"
+Vinyl Chloride
+Trichloroethylene
+"cis-1,2-Dichloroethylene"
+"trans-1,2-Dichloroethylene"
+Dissolved Oxygen
+"Aluminum, Dissolved"
+"Magnesium, Total"
+E.coli
+Chromium (Total)
+"Nickel, Total"
+"Copper, Total Recoverable"
+"Arsenic (III), Total Recoverable"
+Enterococci MPN
+"Nitrogen, Total (as N)"
+Total Kjeldahl Nitrogen (TKN) (as N)
+"Ammonia, Total (as N)"
+Soluble Chemical Oxygen Demand
+"Selenium, Total"
+Motor Oil
+Jet Fuel
+"Magnesium, Dissolved"
+"Hardness, Total (as CaCO3)"
+"Nickel, Total Recoverable"
+"Vanadium, Total Recoverable"
+"Chromium, Total Recoverable"
+"Barium, Total Recoverable"
+"Barium, Total"
+"Arsenic, Total Recoverable"
+"Cobalt, Total Recoverable"
+"Antimony, Total Recoverable"
+"Molybdenum, Total Recoverable"
+"Selenium, Total Recoverable"
+"Silver, Total Recoverable"
+"Thallium, Total"
+"Iron, Dissolved"
+"Mercury, Dissolved"
+"Molybdenum, Dissolved"
+"Selenium, Dissolved"
+"Silver, Dissolved"
+"Thallium, Dissolved"
+"Vanadium, Dissolved"
+"Antimony, Dissolved"
+"Arsenic, Dissolved"
+"Barium, Dissolved"
+"Beryllium, Dissolved"
+"Cobalt, Dissolved"
+"Beryllium, Total Recoverable"
+"Cadmium, Total Recoverable"
+"Mercury, Total Recoverable"
+"BOD5 @ 20 Deg. C, Percent Removal"
+"1,2,3-Trichlorobenzene"
+"1,2,4-Trimethylbenzene"
+"1,1-Dichloropropene"
+PCB-1232
+Methyl Ethyl Ketone
+Bromochloromethane
+"trans-1,3-Dichloropropylene"
+Tetrachloroethylene
+Dibromomethane
+"1,3-Dichlorobenzene"
+"2,2-Dichloropropane"
+Styrene
+Methyl Bromide
+"1,2-Dichloropropane"
+"cis-1,3-Dichloropropylene"
+Methylene Chloride
+Hexachlorobutadiene
+Carbon disulfide
+"1,2-Dichlorobenzene"
+Naphthalene
+Chlorobenzene
+Bromobenzene
+n-Propylbenzene
+Chloroform
+"1,1,2-Trichloro-1,2,2-Trifluoroethane"
+tert-Butylbenzene
+Trichlorofluoromethane
+PCB-1221
+PCB-1016
+Chloroethane
+"1,1-Dichloroethylene"
+"1,3-Dichloropropane"
+Methyl Chloride
+Dichlorobromomethane
+Isopropylbenzene
+2-Hexanone
+"1,3,5-Trimethylbenzene"
+PCB-1254
+"1,1,1-Trichloroethane"
+Vinyl acetate
+"1,2-Dichloroethane"
+"1,4-Dichlorobenzene"
+PCB-1242
+"1,2-Dibromoethane"
+Bromoform
+4-Methyl-2-pentanone
+"1,1,2,2-Tetrachloroethane"
+4-Chlorotoluene
+"1,2,4-Trichlorobenzene"
+Chlorodibromomethane
+"1,2,3-Trichloropropane"
+"1,1,1,2-Tetrachloroethane"
+p-Isopropyltoluene
+"1,2-Dibromo-3-Chloropropane"
+"1,1-Dichloroethane"
+Carbon Tetrachloride
+PCB-1260
+"1,1,2-Trichloroethane"
+sec-Butylbenzene
+2-propanone (Acetone)
+2-Chlorotoluene
+n-Butylbenzene
+PCB-1248
+Dichlorodifluoromethane
+Diazinon
+Benzoic Acid
+3-Methylphenol/4-Methylphenol Coelution
+"Cyanide, Total (as CN)"
+"Magnesium, Total Recoverable"
+"Phenols, Total"
+Methylene Blue Active Substances (MBAS)
+Chromium (VI) Total Recoverable
+"Cobalt, Total"
+Benzo(k)fluoranthene
+Acenaphthene
+2-Fluorobiphenyl
+"Indeno (1,2,3-cd) Pyrene"
+Phenanthrene
+"Dibenzo(a,h)anthracene"
+2-Methylnaphthalene
+Chrysene
+Benzo(b)fluoranthene
+Benzo(ghi)perylene
+Fluorene
+Terphenyl-d14
+Benzo(a)pyrene
+Fluoranthene
+Acenaphthylene
+Nitrobenzene-d5
+Pyrene
+Anthracene
+Benzo(a)anthracene
+"Silver, Total"
+"Total Suspended Solids (TSS), Net Value"
+Tritium
+"Radiation, Gross Beta"
+"Radiation, Gross Alpha"
+Toxaphene
+gamma-BHC
+Heptachlor
+Heptachlor Epoxide
+"4,4-DDT"
+alpha-BHC
+beta-BHC
+delta-BHC
+Endosulfan Sulfate
+Endrin Aldehyde
+alpha-Endosulfan
+beta-Endosulfan
+Methoxychlor
+Chlordane
+Aldrin
+"4,4-DDD"
+"4,4-DDE"
+alpha-Chlordane
+Dieldrin
+gamma-Chlordane
+Oxychlordane
+"2,4-DDD"
+"2,4-DDE"
+"2,4-DDT"
+cis-Nonachlor
+trans-Nonachlor
+Endrin
+Hexachlorobenzene
+Mirex
+"Molybdenum, Total"
+"Nitrite, Total (as NO2)"
+"Vanadium, Total"
+"Beryllium, Total"
+"Antimony, Total"
+"Calcium, Total"
+Soluble Biochemical Oxygen Demand (5-day @ 20 Deg. C)
+Total Coliform
+Bicarbonate as CaCO3
+"Sulfate, Total (as SO4)"
+"Sodium, Total"
+"Alkalinity, Total (as CaCO3)"
+Fecal Coliform
+Volatile Organic Compounds (VOCs)
+"Potassium, Total Recoverable"
+"Orthophosphate, Total (as P)"
+Halogenated Volatile Organic Compounds (HVOC)
+"Orthophosphate, Dissolved (as P)"
+"Sulfate, Total (as S)"
+Endrin ketone
+Polynuclear Aromatic Hydrocarbons (PAHs)
+"Titanium, Total"
+"Fluoride, Total"
+"Polychlorinated Biphenyls (PCBs), Sum"
+Trichlorotrifluoroethane
+"trans-1,2-Dichloroethene"
+"cis-1,3-Dichloropropene"
+"trans-1,3-Dichloropropene"
+Tetrachloroethene
+Trichloroethene
+Bromomethane
+Dibromodichloromethane
+Chloromethane
+Toluene-d8
+Isopropanol
+"Hardness, Mg (as CaCO3)"
+"Hardness, Ca (as CaCO3)"
+"Arsenic (III), Dissolved"
+"Ammonia, Unionized (as N)"
+"Nitrogen, Total Organic (as N)"
+p-Cresol
+"Boron, Total"
+"Glyphosate, Total"
+Perchlorate
+"Sodium, Dissolved"
+1-Methylnaphthalene
+Chronic Toxicity
+"Tin, Total Recoverable"
+Aniline
+Dimethyl Phthalate
+Chlorpyrifos
+Butylbenzyl Phthalate
+Ethylene glycol
+Phenol-d5
+Bis (2-Ethylhexyl) Phthalate
+Diethyl Phthalate
+Di-n-butyl Phthalate
+Benzidine
+Bis (2-Chloroethyl) Ether
+Bis (2-Chloroethoxy) Methane
+Bis (2-Chloroisopropyl) Ether
+"1,2-Diphenylhydrazine"
+Nitrobenzene
+2-Chloronaphthalene
+2-Chlorophenol
+2-Nitrophenol
+Di-n-octyl Phthalate
+"2,6-Dichlorophenol"
+Di (2-ethylhexyl) adipate
+Benzyl alcohol
+4-Chloroaniline
+Dibenzofuran
+2-Methylphenol
+2-Nitroaniline
+3-Nitroaniline
+"2,4-Dichlorophenol"
+4-Nitroaniline
+"2,4,5-Trichlorophenol"
+TPH as Kerosene
+Biphenyl
+"4,6-Dinitro-2-methylphenol"
+4-Chloro-3-methylphenol
+Pyridine
+"2,4-Dimethylphenol"
+"2,4-Dinitrotoluene"
+"2,4-Dinitrophenol"
+"2,6-Dinitrotoluene"
+"3,3-Dichlorobenzidine"
+4-Bromophenyl Phenyl Ether
+4-Chlorophenyl Phenyl Ether
+4-Nitrophenol
+Hexachlorocyclopentadiene
+Hexachloroethane
+Isophorone
+N-Nitrosodi-n-Propylamine
+N-Nitrosodiphenylamine
+Total Solids (TS)
+Chromium (VI) Dissolved
+Acrylonitrile
+"Manganese, Total Recoverable"
+Chromium (III) Dissolved
+PCB 036
+Propachlor
+"Sulfide, Total (as S)"
+"Sulfide, Dissolved (as S)"
+"2-Methyl-4,6-Dinitrophenol"
+3-Methyl-4-Chlorophenol
+Acrolein
+2-Chloroethylvinyl Ether
+PCB-1262
+N-Nitrosodimethylamine
+Asbestos
+TCDD Equivalents
+Endosulfan I
+Dibromochloromethane
+Endosulfan II
+"cis-1,2-Dichloroethene"
+"2,2-Dichloro-1,1,1-trifluoroethane"
+"Tin, Dissolved"
+"Tin, Total"
+Isopropyl Ether
+Allyl Chloride
+"2,6-Dimethylnaphthalene"
+Benzo(e)pyrene
+Perylene
+1-Methylphenanthrene
+Carbonaceous Biochemical Oxygen Demand (CBOD) (5-day @ 20 Deg. C)
+"Carbonaceous Biochemical Oxygen Demand (CBOD) (5-day @ 20 Deg. C), Percent Removal"
+Dioxane
+Chromium (III)
+"Chlorine, Total Residual"
+"Manganese, Total"
+"Phosphorus, Total Organic (as P)"
+"Potassium, Dissolved"
+"Tetrachloroethanes, Sum"
+2-Chlorophenol-d4
+"Dichlorobenzenes, Sum"
+Carbazole
+Pentachloroethane
+Parathion
+Methyl Parathion
+Dimethoate
+Disulfoton
+Phorate
+N-Nitrosodiethylamine
+"Dissolved Oxygen, saturation"
+Methanol
+"DDT/DDD/DDE, Sum of P,P & O,P Isomers"
+alpha-Terpineol
+Phenol-d6
+"Boron, Dissolved"
+"Boron, Total Recoverable"
+"Calcium, Total Recoverable"
+Suspended Sediment Concentration (SSC)
+"Silica, Dissolved (as SiO2)"
+"Alkalinity, Carbonate (as CaCO3)"
+"Alkalinity, Bicarbonate (as CaCO3)"
+"Alkalinity, Hydroxide (as CaCO3)"
+Fixed Dissolved Solids (FDS)
+Ethanol
+"1,4-Dichlorobenzene-d4"
+Sulfite (as SO3)
+"2,4-D"
+Diuron
+"1,3-Dichloropropylenes, Sum"
+Salinity
+"Calcium, Dissolved"
+Carbonate Ion (as CO3)
+Bicarbonate Ion (as HCO3)
+"Cyanide, Free Available"
+"Cyanide, (WAD)"
+"Nitrogen, Total Inorganic (as N)"
+n-Tetracosane
+PCB-1268
+Fecal Streptococci
+"Phosphorus, Dissolved (as P)"
+Volatile Suspended Solids (VSS)
+Alachlor
+Atrazine
+"1,2-Dichloroethylenes, Sum"
+Enterococci CFU
+"Titanium, Total Recoverable"
