@@ -1,0 +1,434 @@
+PARAMETER,unit.types,max.unit,second.unit,third.unit,fourth.unit
+1-Methylnaphthalene,1,ug/L,NA,NA,NA
+1-Methylphenanthrene,1,mg/L,NA,NA,NA
+"1,1-Dichloroethane",1,ug/L,NA,NA,NA
+"1,1-Dichloroethylene",1,ug/L,NA,NA,NA
+"1,1-Dichloropropene",1,ug/L,NA,NA,NA
+"1,1,1-Trichloroethane",1,ug/L,NA,NA,NA
+"1,1,1,2-Tetrachloroethane",1,ug/L,NA,NA,NA
+"1,1,2-Trichloro-1,2,2-Trifluoroethane",1,ug/L,NA,NA,NA
+"1,1,2-Trichloroethane",1,ug/L,NA,NA,NA
+"1,1,2,2-Tetrachloroethane",1,ug/L,NA,NA,NA
+"1,2-Dibromo-3-Chloropropane",1,ug/L,NA,NA,NA
+"1,2-Dibromoethane",1,ug/L,NA,NA,NA
+"1,2-Dichlorobenzene",1,ug/L,NA,NA,NA
+"1,2-Dichloroethane",1,ug/L,NA,NA,NA
+"1,2-Dichloroethylenes, Sum",1,ug/L,NA,NA,NA
+"1,2-Dichloropropane",1,ug/L,NA,NA,NA
+"1,2-Diphenylhydrazine",1,ug/L,NA,NA,NA
+"1,2,3-Trichlorobenzene",1,ug/L,NA,NA,NA
+"1,2,3-Trichloropropane",1,ug/L,NA,NA,NA
+"1,2,3,4,6,7,8-Heptachlorodibenzo-p-dioxin",1,pg/L,NA,NA,NA
+"1,2,3,4,6,7,8-Heptachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,3,4,6,7,8,9-Octachlorodibenzo-p-dioxin",1,pg/L,NA,NA,NA
+"1,2,3,4,6,7,8,9-Octachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,3,4,7,8-Hexachlorodibenzo-p-dioxin",1,pg/L,NA,NA,NA
+"1,2,3,4,7,8-Hexachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,3,4,7,8,9-Heptachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,3,6,7,8-Hexachlorodibenzo-p-dioxin",1,pg/L,NA,NA,NA
+"1,2,3,6,7,8-Hexachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,3,7,8-Pentachlorodibenzo-p-dioxin",1,pg/L,NA,NA,NA
+"1,2,3,7,8-Pentachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,3,7,8,9-Hexachlorodibenzo-p-dioxin",1,pg/L,NA,NA,NA
+"1,2,3,7,8,9-Hexachlorodibenzofuran",1,pg/L,NA,NA,NA
+"1,2,4-Trichlorobenzene",1,ug/L,NA,NA,NA
+"1,2,4-Trimethylbenzene",1,ug/L,NA,NA,NA
+"1,3-Dichlorobenzene",1,ug/L,NA,NA,NA
+"1,3-Dichloropropane",1,ug/L,NA,NA,NA
+"1,3-Dichloropropylenes, Sum",1,ug/L,NA,NA,NA
+"1,3,5-Trimethylbenzene",1,ug/L,NA,NA,NA
+"1,4-Dichlorobenzene",1,ug/L,NA,NA,NA
+"1,4-Dichlorobenzene-d4",1,ug/L,NA,NA,NA
+2-Chloroethylvinyl Ether,1,ug/L,NA,NA,NA
+2-Chloronaphthalene,1,ug/L,NA,NA,NA
+2-Chlorophenol,1,ug/L,NA,NA,NA
+2-Chlorophenol-d4,1,ug/L,NA,NA,NA
+2-Chlorotoluene,1,ug/L,NA,NA,NA
+2-Fluorobiphenyl,1,ug/L,NA,NA,NA
+2-Hexanone,1,ug/L,NA,NA,NA
+"2-Methyl-4,6-Dinitrophenol",1,ug/L,NA,NA,NA
+2-Methylnaphthalene,1,ug/L,NA,NA,NA
+2-Methylphenol,1,ug/L,NA,NA,NA
+2-Nitroaniline,1,ug/L,NA,NA,NA
+2-Nitrophenol,1,ug/L,NA,NA,NA
+2-propanone (Acetone),1,ug/L,NA,NA,NA
+"2,2-Dichloro-1,1,1-trifluoroethane",1,ug/L,NA,NA,NA
+"2,2-Dichloropropane",1,ug/L,NA,NA,NA
+"2,3,4,5-Tetrachlorophenol",1,ug/L,NA,NA,NA
+"2,3,4,6-Tetrachlorophenol",1,ug/L,NA,NA,NA
+"2,3,4,6,7,8-Hexachlorodibenzofuran",1,pg/L,NA,NA,NA
+"2,3,4,7,8-Pentachlorodibenzofuran",1,pg/L,NA,NA,NA
+"2,3,7,8-TCDD (Dioxin)",1,pg/L,NA,NA,NA
+"2,3,7,8-Tetrachlorodibenzofuran",1,pg/L,NA,NA,NA
+"2,4-D",1,ug/L,NA,NA,NA
+"2,4-DDD",2,ug/L,pg/L,NA,NA
+"2,4-DDE",2,ug/L,pg/L,NA,NA
+"2,4-DDT",2,ug/L,pg/L,NA,NA
+"2,4-Dichlorophenol",1,ug/L,NA,NA,NA
+"2,4-Dimethylphenol",1,ug/L,NA,NA,NA
+"2,4-Dinitrophenol",1,ug/L,NA,NA,NA
+"2,4-Dinitrotoluene",1,ug/L,NA,NA,NA
+"2,4,5-Trichlorophenol",1,ug/L,NA,NA,NA
+"2,4,6-Trichlorophenol",1,ug/L,NA,NA,NA
+"2,6-Dichlorophenol",1,ug/L,NA,NA,NA
+"2,6-Dimethylnaphthalene",1,ug/L,NA,NA,NA
+"2,6-Dinitrotoluene",1,ug/L,NA,NA,NA
+3-Methyl-4-Chlorophenol,1,ug/L,NA,NA,NA
+3-Methylphenol/4-Methylphenol Coelution,1,ug/L,NA,NA,NA
+3-Nitroaniline,1,ug/L,NA,NA,NA
+"3,3-Dichlorobenzidine",1,ug/L,NA,NA,NA
+4-Bromophenyl Phenyl Ether,1,ug/L,NA,NA,NA
+4-Chloro-3-methylphenol,2,mg/L,ug/L,NA,NA
+4-Chloroaniline,1,ug/L,NA,NA,NA
+4-Chlorophenyl Phenyl Ether,1,ug/L,NA,NA,NA
+4-Chlorotoluene,1,ug/L,NA,NA,NA
+4-Methyl-2-pentanone,2,ug/L,mg/L,NA,NA
+4-Nitroaniline,1,ug/L,NA,NA,NA
+4-Nitrophenol,1,ug/L,NA,NA,NA
+"4,4-DDD",2,ug/L,pg/L,NA,NA
+"4,4-DDE",2,ug/L,pg/L,NA,NA
+"4,4-DDT",2,ug/L,pg/L,NA,NA
+"4,6-Dinitro-2-methylphenol",2,mg/L,ug/L,NA,NA
+Acenaphthene,1,ug/L,NA,NA,NA
+Acenaphthylene,1,ug/L,NA,NA,NA
+Acrolein,1,ug/L,NA,NA,NA
+Acrylonitrile,2,ug/L,mg/L,NA,NA
+Alachlor,1,ug/L,NA,NA,NA
+Aldrin,2,ug/L,pg/L,NA,NA
+"Alkalinity, Bicarbonate (as CaCO3)",1,mg/L,NA,NA,NA
+"Alkalinity, Carbonate (as CaCO3)",1,mg/L,NA,NA,NA
+"Alkalinity, Hydroxide (as CaCO3)",1,ug/L,NA,NA,NA
+"Alkalinity, Total (as CaCO3)",1,mg/L,NA,NA,NA
+Allyl Chloride,1,ug/L,NA,NA,NA
+alpha-BHC,2,ug/L,pg/L,NA,NA
+alpha-Chlordane,2,ug/L,pg/L,NA,NA
+alpha-Endosulfan,2,ug/L,pg/L,NA,NA
+alpha-Terpineol,1,mg/L,NA,NA,NA
+"Aluminum, Dissolved",2,mg/L,ug/L,NA,NA
+"Aluminum, Total",2,mg/L,ug/L,NA,NA
+"Aluminum, Total Recoverable",2,mg/L,ug/L,NA,NA
+"Ammonia, Total (as N)",1,mg/L,NA,NA,NA
+"Ammonia, Unionized (as N)",1,mg/L,NA,NA,NA
+Aniline,1,ug/L,NA,NA,NA
+Anthracene,1,ug/L,NA,NA,NA
+"Antimony, Dissolved",2,mg/L,ug/L,NA,NA
+"Antimony, Total",2,mg/L,ug/L,NA,NA
+"Antimony, Total Recoverable",2,mg/L,ug/L,NA,NA
+"Arsenic (III), Dissolved",2,mg/L,ug/L,NA,NA
+"Arsenic (III), Total Recoverable",2,mg/L,ug/L,NA,NA
+"Arsenic, Dissolved",2,mg/L,ug/L,NA,NA
+"Arsenic, Total",2,mg/L,ug/L,NA,NA
+"Arsenic, Total Recoverable",2,ug/L,mg/L,NA,NA
+Atrazine,1,ug/L,NA,NA,NA
+"Barium, Dissolved",2,mg/L,ug/L,NA,NA
+"Barium, Total",2,mg/L,ug/L,NA,NA
+"Barium, Total Recoverable",2,mg/L,ug/L,NA,NA
+Benzene,2,ug/L,mg/L,NA,NA
+Benzidine,1,ug/L,NA,NA,NA
+Benzo(a)anthracene,1,ug/L,NA,NA,NA
+Benzo(a)pyrene,1,ug/L,NA,NA,NA
+Benzo(b)fluoranthene,1,ug/L,NA,NA,NA
+Benzo(e)pyrene,1,mg/L,NA,NA,NA
+Benzo(ghi)perylene,1,ug/L,NA,NA,NA
+Benzo(k)fluoranthene,1,ug/L,NA,NA,NA
+Benzoic Acid,2,ug/L,mg/L,NA,NA
+Benzyl alcohol,1,ug/L,NA,NA,NA
+"Beryllium, Dissolved",2,mg/L,ug/L,NA,NA
+"Beryllium, Total",2,ug/L,mg/L,NA,NA
+"Beryllium, Total Recoverable",1,mg/L,NA,NA,NA
+beta-BHC,2,ug/L,pg/L,NA,NA
+beta-Endosulfan,2,ug/L,pg/L,NA,NA
+Bicarbonate as CaCO3,1,ug/L,NA,NA,NA
+Bicarbonate Ion (as HCO3),1,mg/L,NA,NA,NA
+Biochemical Oxygen Demand (BOD) (5-day @ 20 Deg. C),1,mg/L,NA,NA,NA
+Biphenyl,1,mg/L,NA,NA,NA
+Bis (2-Chloroethoxy) Methane,1,ug/L,NA,NA,NA
+Bis (2-Chloroethyl) Ether,1,ug/L,NA,NA,NA
+Bis (2-Chloroisopropyl) Ether,1,ug/L,NA,NA,NA
+Bis (2-Ethylhexyl) Phthalate,1,ug/L,NA,NA,NA
+"Boron, Dissolved",2,mg/L,ug/L,NA,NA
+"Boron, Total",2,ug/L,mg/L,NA,NA
+"Boron, Total Recoverable",2,ug/L,mg/L,NA,NA
+Bromobenzene,1,ug/L,NA,NA,NA
+Bromochloromethane,1,ug/L,NA,NA,NA
+Bromoform,1,ug/L,NA,NA,NA
+Bromomethane,1,ug/L,NA,NA,NA
+Butylbenzyl Phthalate,2,ug/L,mg/L,NA,NA
+"Cadmium, Dissolved",2,mg/L,ug/L,NA,NA
+"Cadmium, Total",2,mg/L,ug/L,NA,NA
+"Cadmium, Total Recoverable",2,ug/L,mg/L,NA,NA
+"Calcium, Dissolved",1,mg/L,NA,NA,NA
+"Calcium, Total",1,mg/L,NA,NA,NA
+"Calcium, Total Recoverable",1,mg/L,NA,NA,NA
+Carbazole,2,ug/L,mg/L,NA,NA
+Carbon disulfide,2,ug/L,mg/L,NA,NA
+Carbon Tetrachloride,1,ug/L,NA,NA,NA
+Carbonaceous Biochemical Oxygen Demand (CBOD) (5-day @ 20 Deg. C),1,mg/L,NA,NA,NA
+"Carbonaceous Biochemical Oxygen Demand (CBOD) (5-day @ 20 Deg. C), Percent Removal",1,%,NA,NA,NA
+Carbonate Ion (as CO3),1,mg/L,NA,NA,NA
+Chemical Oxygen Demand (COD),1,mg/L,NA,NA,NA
+Chlordane,1,ug/L,NA,NA,NA
+Chloride,1,mg/L,NA,NA,NA
+"Chlorine, Total Residual",1,mg/L,NA,NA,NA
+Chlorobenzene,1,ug/L,NA,NA,NA
+Chlorodibromomethane,1,ug/L,NA,NA,NA
+Chloroethane,2,ug/L,mg/L,NA,NA
+Chloroform,1,ug/L,NA,NA,NA
+Chloromethane,1,ug/L,NA,NA,NA
+Chlorpyrifos,1,ug/L,NA,NA,NA
+Chromium (III),2,mg/L,ug/L,NA,NA
+Chromium (III) Dissolved,2,mg/L,ug/L,NA,NA
+Chromium (Total),2,mg/L,ug/L,NA,NA
+Chromium (VI),2,ug/L,mg/L,NA,NA
+Chromium (VI) Dissolved,2,mg/L,ug/L,NA,NA
+Chromium (VI) Total Recoverable,1,ug/L,NA,NA,NA
+"Chromium, Dissolved",2,mg/L,ug/L,NA,NA
+"Chromium, Total Recoverable",2,mg/L,ug/L,NA,NA
+Chronic Toxicity,1,TUc,NA,NA,NA
+Chrysene,1,ug/L,NA,NA,NA
+"cis-1,2-Dichloroethene",1,ug/L,NA,NA,NA
+"cis-1,2-Dichloroethylene",2,ug/L,mg/L,NA,NA
+"cis-1,3-Dichloropropene",1,ug/L,NA,NA,NA
+"cis-1,3-Dichloropropylene",1,ug/L,NA,NA,NA
+cis-Nonachlor,2,ug/L,pg/L,NA,NA
+"Cobalt, Dissolved",2,mg/L,ug/L,NA,NA
+"Cobalt, Total",2,mg/L,ug/L,NA,NA
+"Cobalt, Total Recoverable",1,mg/L,NA,NA,NA
+"Copper, Dissolved",2,mg/L,ug/L,NA,NA
+"Copper, Total",2,mg/L,ug/L,NA,NA
+"Copper, Total Recoverable",2,ug/L,mg/L,NA,NA
+"Cyanide, (WAD)",1,mg/L,NA,NA,NA
+"Cyanide, Free Available",1,mg/L,NA,NA,NA
+"Cyanide, Total (as CN)",2,mg/L,ug/L,NA,NA
+"DDT/DDD/DDE, Sum of P,P & O,P Isomers",1,ug/L,NA,NA,NA
+delta-BHC,2,ug/L,pg/L,NA,NA
+Di-n-butyl Phthalate,1,ug/L,NA,NA,NA
+Di-n-octyl Phthalate,1,ug/L,NA,NA,NA
+Di (2-ethylhexyl) adipate,1,mg/L,NA,NA,NA
+Diazinon,1,ug/L,NA,NA,NA
+"Dibenzo(a,h)anthracene",1,ug/L,NA,NA,NA
+Dibenzofuran,1,ug/L,NA,NA,NA
+Dibromochloromethane,1,ug/L,NA,NA,NA
+Dibromodichloromethane,1,ug/L,NA,NA,NA
+Dibromomethane,1,ug/L,NA,NA,NA
+"Dichlorobenzenes, Sum",2,ug/L,ng/L,NA,NA
+Dichlorobromomethane,1,ug/L,NA,NA,NA
+Dichlorodifluoromethane,1,ug/L,NA,NA,NA
+Dieldrin,2,ug/L,pg/L,NA,NA
+Diesel Oil,2,mg/L,ug/L,NA,NA
+Diethyl Phthalate,1,ug/L,NA,NA,NA
+Dimethoate,1,ug/L,NA,NA,NA
+Dimethyl Phthalate,2,ug/L,mg/L,NA,NA
+Dioxane,1,ug/L,NA,NA,NA
+Dissolved Oxygen,1,mg/L,NA,NA,NA
+"Dissolved Oxygen, saturation",1,%,NA,NA,NA
+Disulfoton,1,ug/L,NA,NA,NA
+Diuron,1,ug/L,NA,NA,NA
+E.coli,1,MPN/100 mL,NA,NA,NA
+Electrical Conductivity @ 25 Deg. C,1,umhos/cm,NA,NA,NA
+Endosulfan I,1,ug/L,NA,NA,NA
+Endosulfan II,1,ug/L,NA,NA,NA
+Endosulfan Sulfate,2,ug/L,pg/L,NA,NA
+Endrin,2,ug/L,pg/L,NA,NA
+Endrin Aldehyde,2,ug/L,pg/L,NA,NA
+Endrin ketone,1,mg/L,NA,NA,NA
+Enterococci CFU,1,CFU/100 mL,NA,NA,NA
+Enterococci MPN,1,MPN/100 mL,NA,NA,NA
+Ethanol,1,mg/L,NA,NA,NA
+Ethyl-Tert Butyl Ether (ETBE),1,ug/L,NA,NA,NA
+Ethylbenzene,2,ug/L,mg/L,NA,NA
+Ethylene glycol,1,mg/L,NA,NA,NA
+Fecal Coliform,1,MPN/100 mL,NA,NA,NA
+Fecal Streptococci,1,MPN/100 mL,NA,NA,NA
+Fixed Dissolved Solids (FDS),1,mg/L,NA,NA,NA
+Fluoranthene,2,ug/L,mg/L,NA,NA
+Fluorene,1,ug/L,NA,NA,NA
+"Fluoride, Total",1,mg/L,NA,NA,NA
+gamma-BHC,2,ug/L,pg/L,NA,NA
+gamma-Chlordane,2,ug/L,pg/L,NA,NA
+Gasoline,2,mg/L,ug/L,NA,NA
+"Glyphosate, Total",1,ug/L,NA,NA,NA
+Halogenated Volatile Organic Compounds (HVOC),1,ug/L,NA,NA,NA
+"Hardness, Ca (as CaCO3)",1,mg/L,NA,NA,NA
+"Hardness, Mg (as CaCO3)",1,mg/L,NA,NA,NA
+"Hardness, Total (as CaCO3)",1,mg/L,NA,NA,NA
+Heptachlor,2,ug/L,pg/L,NA,NA
+Heptachlor Epoxide,2,ug/L,pg/L,NA,NA
+Hexachlorobenzene,2,ug/L,pg/L,NA,NA
+Hexachlorobutadiene,1,ug/L,NA,NA,NA
+Hexachlorocyclopentadiene,1,ug/L,NA,NA,NA
+Hexachloroethane,1,ug/L,NA,NA,NA
+"Hydrocarbons, Total Petroleum",2,mg/L,ug/L,NA,NA
+"Indeno (1,2,3-cd) Pyrene",1,ug/L,NA,NA,NA
+"Iron, Dissolved",2,mg/L,ug/L,NA,NA
+"Iron, Total",2,mg/L,ug/L,NA,NA
+"Iron, Total Recoverable",2,mg/L,ug/L,NA,NA
+Isophorone,1,ug/L,NA,NA,NA
+Isopropanol,1,mg/L,NA,NA,NA
+Isopropyl Ether,1,ug/L,NA,NA,NA
+Isopropylbenzene,1,ug/L,NA,NA,NA
+Jet Fuel,1,mg/L,NA,NA,NA
+"Lead, Dissolved",2,mg/L,ug/L,NA,NA
+"Lead, Total",2,mg/L,ug/L,NA,NA
+"Lead, Total Recoverable",2,mg/L,ug/L,NA,NA
+"m,p-Xylenes",1,ug/L,NA,NA,NA
+"Magnesium, Dissolved",1,mg/L,NA,NA,NA
+"Magnesium, Total",1,mg/L,NA,NA,NA
+"Magnesium, Total Recoverable",1,mg/L,NA,NA,NA
+"Manganese, Dissolved",1,mg/L,NA,NA,NA
+"Manganese, Total",1,mg/L,NA,NA,NA
+"Manganese, Total Recoverable",1,mg/L,NA,NA,NA
+"Mercury, Dissolved",3,ug/L,mg/L,ng/L,NA
+"Mercury, Total",3,ug/L,mg/L,ng/L,NA
+"Mercury, Total Recoverable",2,ug/L,mg/L,NA,NA
+Methanol,1,mg/L,NA,NA,NA
+Methoxychlor,2,ug/L,pg/L,NA,NA
+Methyl Bromide,1,ug/L,NA,NA,NA
+Methyl Chloride,1,ug/L,NA,NA,NA
+Methyl Ethyl Ketone,2,ug/L,mg/L,NA,NA
+Methyl Parathion,1,ug/L,NA,NA,NA
+Methyl Tert-butyl Ether (MTBE),1,ug/L,NA,NA,NA
+Methylene Blue Active Substances (MBAS),1,mg/L,NA,NA,NA
+Methylene Chloride,1,ug/L,NA,NA,NA
+Mirex,2,pg/L,ug/L,NA,NA
+"Molybdenum, Dissolved",2,ug/L,mg/L,NA,NA
+"Molybdenum, Total",2,mg/L,ug/L,NA,NA
+"Molybdenum, Total Recoverable",2,mg/L,ug/L,NA,NA
+Motor Oil,1,mg/L,NA,NA,NA
+n-Butylbenzene,1,ug/L,NA,NA,NA
+N-Nitrosodi-n-Propylamine,1,ug/L,NA,NA,NA
+N-Nitrosodiethylamine,2,mg/L,ug/L,NA,NA
+N-Nitrosodimethylamine,1,ug/L,NA,NA,NA
+N-Nitrosodiphenylamine,1,ug/L,NA,NA,NA
+n-Propylbenzene,1,ug/L,NA,NA,NA
+n-Tetracosane,1,ug/L,NA,NA,NA
+Naphthalene,1,ug/L,NA,NA,NA
+"Nickel, Dissolved",2,mg/L,ug/L,NA,NA
+"Nickel, Total",2,mg/L,ug/L,NA,NA
+"Nickel, Total Recoverable",2,ug/L,mg/L,NA,NA
+"Nitrate, Total (as N)",1,mg/L,NA,NA,NA
+"Nitrate, Total (as NO3)",1,mg/L,NA,NA,NA
+Nitrite Plus Nitrate (as N),2,mg/L,ug/L,NA,NA
+"Nitrite, Total (as N)",1,mg/L,NA,NA,NA
+"Nitrite, Total (as NO2)",1,mg/L,NA,NA,NA
+Nitrobenzene,1,ug/L,NA,NA,NA
+Nitrobenzene-d5,1,ug/L,NA,NA,NA
+"Nitrogen, Total (as N)",1,mg/L,NA,NA,NA
+"Nitrogen, Total Inorganic (as N)",1,mg/L,NA,NA,NA
+"Nitrogen, Total Organic (as N)",1,mg/L,NA,NA,NA
+o-Xylene,1,ug/L,NA,NA,NA
+Oil and Grease,1,mg/L,NA,NA,NA
+"Orthophosphate, Dissolved (as P)",1,mg/L,NA,NA,NA
+"Orthophosphate, Total (as P)",1,mg/L,NA,NA,NA
+Oxychlordane,2,ug/L,pg/L,NA,NA
+p-Cresol,2,ug/L,mg/L,NA,NA
+p-Isopropyltoluene,1,ug/L,NA,NA,NA
+Parathion,1,ug/L,NA,NA,NA
+PCB-1016,2,ug/L,mg/L,NA,NA
+PCB-1221,2,ug/L,mg/L,NA,NA
+PCB-1232,2,ug/L,mg/L,NA,NA
+PCB-1242,2,ug/L,mg/L,NA,NA
+PCB-1248,2,ug/L,mg/L,NA,NA
+PCB-1254,2,ug/L,mg/L,NA,NA
+PCB-1260,2,ug/L,mg/L,NA,NA
+PCB-1262,2,ug/L,mg/L,NA,NA
+PCB-1268,2,ug/L,mg/L,NA,NA
+PCB 036,1,ug/L,NA,NA,NA
+Pentachloroethane,1,ug/L,NA,NA,NA
+Pentachlorophenol,1,ug/L,NA,NA,NA
+Perchlorate,1,ug/L,NA,NA,NA
+Perylene,1,mg/L,NA,NA,NA
+"Petroleum Hydrocarbons, Total",1,mg/L,NA,NA,NA
+pH,1,SU,NA,NA,NA
+Phenanthrene,1,ug/L,NA,NA,NA
+Phenol-d5,1,ug/L,NA,NA,NA
+Phenol-d6,1,ug/L,NA,NA,NA
+"Phenol, Single Compound",1,ug/L,NA,NA,NA
+"Phenols, Chlorinated",1,ug/L,NA,NA,NA
+"Phenols, Total",2,mg/L,ug/L,NA,NA
+Phorate,1,ug/L,NA,NA,NA
+"Phosphate, Total (as P)",1,mg/L,NA,NA,NA
+"Phosphorus, Dissolved (as P)",1,mg/L,NA,NA,NA
+"Phosphorus, Total (as P)",1,mg/L,NA,NA,NA
+"Polychlorinated Biphenyls (PCBs), Sum",1,ug/L,NA,NA,NA
+Polynuclear Aromatic Hydrocarbons (PAHs),1,ug/L,NA,NA,NA
+"Potassium, Dissolved",1,mg/L,NA,NA,NA
+"Potassium, Total Recoverable",1,mg/L,NA,NA,NA
+Propachlor,1,ug/L,NA,NA,NA
+Propiconazole,1,ug/L,NA,NA,NA
+Pyrene,2,ug/L,mg/L,NA,NA
+Pyridine,2,mg/L,ug/L,NA,NA
+"Radiation, Gross Alpha",1,PCi/L,NA,NA,NA
+"Radiation, Gross Beta",1,PCi/L,NA,NA,NA
+Salinity,1,mg/L,NA,NA,NA
+sec-Butylbenzene,1,ug/L,NA,NA,NA
+"Selenium, Dissolved",2,mg/L,ug/L,NA,NA
+"Selenium, Total",2,mg/L,ug/L,NA,NA
+"Selenium, Total Recoverable",2,mg/L,ug/L,NA,NA
+Settleable Solids,1,ml/L,NA,NA,NA
+"Silver, Dissolved",2,mg/L,ug/L,NA,NA
+"Silver, Total",2,mg/L,ug/L,NA,NA
+"Silver, Total Recoverable",2,ug/L,mg/L,NA,NA
+"Sodium, Dissolved",1,mg/L,NA,NA,NA
+"Sodium, Total",1,mg/L,NA,NA,NA
+Soluble Biochemical Oxygen Demand (5-day @ 20 Deg. C),1,mg/L,NA,NA,NA
+Soluble Chemical Oxygen Demand,1,mg/L,NA,NA,NA
+Styrene,1,ug/L,NA,NA,NA
+"Sulfate, Total (as S)",1,mg/L,NA,NA,NA
+"Sulfate, Total (as SO4)",1,mg/L,NA,NA,NA
+"Sulfide, Dissolved (as S)",1,mg/L,NA,NA,NA
+"Sulfide, Total (as S)",2,mg/L,ug/L,NA,NA
+Sulfite (as SO3),1,mg/L,NA,NA,NA
+Suspended Sediment Concentration (SSC),1,mg/L,NA,NA,NA
+Tannin and Lignin,1,mg/L,NA,NA,NA
+TCDD Equivalents,1,pg/L,NA,NA,NA
+Temperature,1,Degrees C,NA,NA,NA
+Terphenyl-d14,1,ug/L,NA,NA,NA
+Tert-Amyl Methyl Ether (TAME),1,ug/L,NA,NA,NA
+Tert-Butyl Alcohol (TBA),1,ug/L,NA,NA,NA
+tert-Butylbenzene,1,ug/L,NA,NA,NA
+"Tetrachloroethanes, Sum",1,ug/L,NA,NA,NA
+Tetrachloroethene,1,ug/L,NA,NA,NA
+Tetrachloroethylene,2,ug/L,ng/L,NA,NA
+"Thallium, Dissolved",2,ug/L,mg/L,NA,NA
+"Thallium, Total",2,mg/L,ug/L,NA,NA
+"Tin, Dissolved",1,mg/L,NA,NA,NA
+"Tin, Total",2,mg/L,ug/L,NA,NA
+"Tin, Total Recoverable",1,mg/L,NA,NA,NA
+"Titanium, Total",1,mg/L,NA,NA,NA
+"Titanium, Total Recoverable",1,mg/L,NA,NA,NA
+Toluene,3,ug/L,mg/L,ng/L,NA
+Toluene-d8,2,mg/L,ug/L,NA,NA
+Total Coliform,1,MPN/100 mL,NA,NA,NA
+Total Dissolved Solids (TDS),1,mg/L,NA,NA,NA
+Total Kjeldahl Nitrogen (TKN) (as N),1,mg/L,NA,NA,NA
+Total Organic Carbon (TOC),1,mg/L,NA,NA,NA
+"Total Organic Carbon (TOC), Percent Removal",1,%,NA,NA,NA
+Total Solids (TS),1,mg/L,NA,NA,NA
+Total Suspended Solids (TSS),1,mg/L,NA,NA,NA
+"Total Suspended Solids (TSS), Net Value",1,mg/L,NA,NA,NA
+Toxaphene,1,ug/L,NA,NA,NA
+TPH as Kerosene,1,mg/L,NA,NA,NA
+TPH as Motor Oil,1,mg/L,NA,NA,NA
+"trans-1,2-Dichloroethene",1,ug/L,NA,NA,NA
+"trans-1,2-Dichloroethylene",2,ug/L,ng/L,NA,NA
+"trans-1,3-Dichloropropene",1,ug/L,NA,NA,NA
+"trans-1,3-Dichloropropylene",2,ug/L,ng/L,NA,NA
+trans-Nonachlor,2,ug/L,pg/L,NA,NA
+Trichloroethene,1,ug/L,NA,NA,NA
+Trichloroethylene,3,ug/L,mg/L,ng/L,NA
+Trichlorofluoromethane,1,ug/L,NA,NA,NA
+Trichlorotrifluoroethane,1,ug/L,NA,NA,NA
+Tritium,1,PCi/L,NA,NA,NA
+Turbidity,1,NTU,NA,NA,NA
+"Vanadium, Dissolved",2,mg/L,ug/L,NA,NA
+"Vanadium, Total",2,mg/L,ug/L,NA,NA
+"Vanadium, Total Recoverable",1,mg/L,NA,NA,NA
+Vinyl acetate,1,ug/L,NA,NA,NA
+Vinyl Chloride,2,ug/L,mg/L,NA,NA
+Volatile Organic Compounds (VOCs),1,ug/L,NA,NA,NA
+Volatile Suspended Solids (VSS),1,mg/L,NA,NA,NA
+"Xylenes, Total",2,ug/L,ng/L,NA,NA
+"Zinc, Dissolved",2,mg/L,ug/L,NA,NA
+"Zinc, Total",2,mg/L,ug/L,NA,NA
+"Zinc, Total Recoverable",2,mg/L,ug/L,NA,NA

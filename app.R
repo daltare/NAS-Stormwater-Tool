@@ -60,7 +60,68 @@
     # get the min and max dates
         min.date <- min(monitoring.data$SAMPLE_DATE)
         max.date <- max(monitoring.data$SAMPLE_DATE)
-
+        
+    # Look at cases where the result is NA - may indicate a non-detect
+        # View(monitoring.data2 %>% dplyr::filter(is.na(RESULT)) %>% dplyr::group_by(RESULT_QUALIFIER, RESULT) %>% dplyr::summarize(count = n()))
+        # set non-detects to zero
+            monitoring.data <- monitoring.data %>% dplyr::mutate(RESULT = dplyr::case_when(RESULT_QUALIFIER == 'ND' & is.na(RESULT) ~ 0,
+                                                                                           TRUE ~ RESULT))
+    
+    # Standardize units
+        # First, look at some individual parameters which have units that are difficult to convert
+            # 'Asbestos' - 4 units (Counts/L, Fibers/L, mg/L, million fibers/L
+                # View(monitoring.data %>% dplyr::filter(PARAMETER == 'Asbestos') %>% dplyr::group_by(UNITS) %>% dplyr::summarise(count = n()))
+                # DROP THE 'Asbestos' DATA
+                    monitoring.data <- monitoring.data %>% dplyr::filter(PARAMETER != 'Asbestos')
+            # 'BOD5 @ 20 Deg. C, Percent Removal' - 2 units (%, mg/L)
+                # View(monitoring.data %>% dplyr::filter(PARAMETER == 'BOD5 @ 20 Deg. C, Percent Removal') %>% dplyr::group_by(UNITS) %>% dplyr::summarise(count = n()))
+                # DROP THE 'BOD5 @ 20 Deg. C, Percent Removal' data
+                    monitoring.data <- monitoring.data %>% dplyr::filter(PARAMETER != 'BOD5 @ 20 Deg. C, Percent Removal') 
+            # 'pH' - 3 units, but it appears they should all be the same (most are SU, also some  mg/L and ppth)
+                # View(monitoring.data %>% dplyr::filter(PARAMETER == 'pH') %>% dplyr::group_by(UNITS) %>% dplyr::summarise(count = n()))
+                # CONVERT ALL UNITS FOR 'pH' to 'SU'
+                    monitoring.data <- monitoring.data %>% dplyr::mutate(UNITS = dplyr::case_when(PARAMETER == 'pH' ~ 'SU',
+                                                                                                  TRUE ~ UNITS))
+            # 'E.coli' - 2 units, most are MPN/100 mL, a few are ppth
+                # View(monitoring.data %>% dplyr::filter(PARAMETER == 'E.coli') %>% dplyr::group_by(UNITS) %>% dplyr::summarise(count = n()))
+                # for E coli, drop cases where units are 'ppth'
+                    monitoring.data <- monitoring.data %>% dplyr::filter(!(PARAMETER == 'E.coli' & UNITS == 'ppth'))    
+            # 'Enterococci MPN' - 3 units, most are MPN/100 mL, a few are CFU/100 mL or ppth
+                # View(monitoring.data %>% dplyr::filter(PARAMETER == 'Enterococci MPN') %>% dplyr::group_by(UNITS) %>% dplyr::summarise(count = n()))
+                # for Enterococci MPN, drop cases where units are 'ppth' or 'CFU/100 mL'
+                    monitoring.data <- monitoring.data %>% dplyr::filter(!(PARAMETER == 'Enterococci MPN' & UNITS == 'ppth'))
+                    monitoring.data <- monitoring.data %>% dplyr::filter(!(PARAMETER == 'Enterococci MPN' & UNITS == 'CFU/100 mL'))
+        # # Second, get a summary of all of the analyte / unit combinations
+            # NOTE: the following steps only need to be done once, so they are commented out, and the results are written to a csv file
+        #     # Count analyte / unit combinations
+        #         conv.param.unit <- monitoring.data %>% dplyr::group_by(PARAMETER, UNITS) %>% dplyr::summarize(count = n())
+        #         conv.units.count <- conv.param.unit %>% dplyr::group_by(PARAMETER) %>% dplyr::summarise(unit.types = n())
+        #     # get a list of all parameters reported with 2 or more units
+        #         conv.units.list <- conv.units.count # %>% dplyr::filter(unit.types > 1)
+        #         conv.units.list$max.unit <- NA
+        #         conv.units.list$second.unit <- NA
+        #         conv.units.list$third.unit <- NA
+        #         conv.units.list$fourth.unit <- NA
+        #         for (i in seq(nrow(conv.units.count))) { # conv.units.list))) {
+        #             conv.param <- conv.param.unit %>% dplyr::filter(PARAMETER == conv.units.list$PARAMETER[i]) %>% dplyr::arrange(dplyr::desc(count))
+        #             conv.units.list$max.unit[i] <- conv.param$UNITS[1]
+        #             conv.units.list$second.unit[i] <- conv.param$UNITS[2]
+        #             conv.units.list$third.unit[i] <- conv.param$UNITS[3]
+        #             conv.units.list$fourth.unit[i] <- conv.param$UNITS[4]
+        #         }
+        #     # View a table showing all of the unit conversions required
+        #         View(conv.units.list %>% dplyr::select(max.unit, second.unit, third.unit, fourth.unit) %>% dplyr::distinct() %>% dplyr::arrange(max.unit))
+        #     # Write out a list of the parameter:unit combinations
+        #         readr::write_csv(x = conv.units.list, path = 'data/Parameters_Units_List.csv')
+            # Read in the list mapping each parameter to its most commonly reported unit, created from the steps above
+                unit.conversions <- readr::read_csv(file = 'data/Parameters_Units_List.csv')
+            # Define Unit Conversions
+                conv_ugL_to_mgL <- 0.001 # ug/L to mg/L
+                conv_ugL_to_pgL <- 1000000 # ug/L to pg/L
+                conv_pgL_to_ugL <- 10^-6 # pg/L to ug/L 
+                conv_mgL_to_ugL <- 1000 # mg/L to ug/L
+                conv_ngL_to_ugL <- 0.001 # ng/L to ug/L
+            
             
 # ----------------------------------------------------------------------------------------------------------------------------------------------- #       
 # ----------------------------------------------------------------------------------------------------------------------------------------------- #
@@ -105,13 +166,27 @@
                  tabPanel('Sampling Summary',
                           sidebarLayout(
                               sidebarPanel( # Sidebar with inputs 
-                                  h4('Filters:'), 
+                                  # h3('Filters:'), 
                                   selectInput(inputId = 'parameter.selected', label = 'Parameter:', choices = c('', parameters$PARAMETER)),
                                   selectInput(inputId = 'region.selected', label = 'Water Board Region:', choices = c('All Regions', 1:4, '5R', '5S', '5F', '6A', '6B', 7:9), selected = 'All Regions'),
+                                  hr(style="border: 1px solid darkgrey"),
+                                  h4('Filter Sample Data Considered:'),
                                   dateRangeInput(inputId = 'dates.selected', label = 'Sample Date Range:', start = min.date, end = max.date, min = min.date, max = max.date),
-                                  sliderInput(inputId = 'count.selected', label = 'Minimum Number of Samples:', min = 0, max = 100, value = 0),
-                                  numericInput(inputId = 'min.selected', label = 'Minimum Value:', value = NULL),
-                                  numericInput(inputId = 'max.selected', label = 'Maximum Value:', value = NULL)
+                                  # h5('Range of Sampling Data Considered: '),
+                                  tags$b(textOutput('unit.reported.sampling')),
+                                  numericInput(inputId = 'min.selected.samples', label = 'Minimum Value:', value = NULL),
+                                  numericInput(inputId = 'max.selected.samples', label = 'Maximum Value:', value = NULL),
+                                  hr(style="border: 1px solid darkgrey"),
+                                  h4('Filter Statistical Results Reported:'),
+                                  selectInput(inputId = 'statistic.selected', label = 'Statistic to Plot:', choices = c('Median', 'Maximum')),
+                                  checkboxInput(inputId = 'marker.size', label = 'Scale marker size by selected statistic', value = FALSE),
+                                  tags$b(textOutput('unit.reported.statistic')),
+                                  # h5('Range of Results for the Selected Statistic:'),
+                                  numericInput(inputId = 'min.selected.result', label = 'Minimum Value:', value = NULL),
+                                  numericInput(inputId = 'max.selected.result', label = 'Maximum Value:', value = NULL),
+                                  sliderInput(inputId = 'count.selected', label = 'Minimum Number of Samples:', min = 0, max = 100, value = 0)#,
+                                  # textOutput('unit.reported')
+                                  # hr(style="border: 1px solid darkgrey"),
                               ),
                               mainPanel( # Show map and data table
                                   # h4('Water Quality Monitoring Results:'),
@@ -175,29 +250,110 @@
             
 # Define server logic required to draw map and create the associated data table -------------------------------------
     server <- function(input, output, session) {
-        # Filter for the selected parameter, region, and date range
+        # convert the results for the selected parameter to the standardized unit
+            unit.out <- reactive({
+                if (input$parameter.selected == '') {
+                    as.character(NA)
+                } else {
+                    as.character((unit.conversions %>% dplyr::filter(PARAMETER == input$parameter.selected) %>% dplyr::select(max.unit))[1,1])
+                }
+            })
+            
+            # output the reporting unit
+                output$unit.reported.statistic <- renderText({
+                    if (input$parameter.selected == '') {
+                        paste0('Range of Results for the Selected Statistic:')
+                    } else {
+                        paste0('Range of Results for the Selected Statistic (', unit.out(), '):')
+                    }
+                })
+                
+                output$unit.reported.sampling <- renderText({
+                    if (input$parameter.selected == '') {
+                        paste0('Range of Sampling Data Considered:')
+                    } else {
+                        paste0('Range of Sampling Data Considered (', unit.out(), '):')
+                    }
+                })
+                
+            
+            unit.types.count <- reactive({
+                if (input$parameter.selected == '') {
+                    as.numeric(NA)
+                } else {
+                    as.numeric((unit.conversions %>% dplyr::filter(PARAMETER == input$parameter.selected) %>% dplyr::select(unit.types))[1,1])
+                }
+            })
+            
+            converted.data <- reactive({
+                monitoring.data %>% 
+                    # if (input$parameter.selected == '') {
+                    #     dplyr::filter(PARAMETER == 'Nothing') # if no parameter is selected, no data is returned (all is filtered out)
+                    # } else {
+                        dplyr::filter(PARAMETER == input$parameter.selected) %>% 
+                            # if (unit.types.count() > 1) {
+                                dplyr::mutate(converted.units = unit.out()) %>% 
+                                    dplyr::mutate(converted.result = dplyr::case_when(UNITS == converted.units ~ RESULT,
+                                                                                      UNITS == 'mg/L' & converted.units == 'ug/L' ~ RESULT * conv_mgL_to_ugL,
+                                                                                      UNITS == 'ng/L' & converted.units == 'ug/L' ~ RESULT * conv_ngL_to_ugL,
+                                                                                      UNITS == 'pg/L' & converted.units == 'ug/L' ~ RESULT * conv_pgL_to_ugL,
+                                                                                      UNITS == 'ug/L' & converted.units == 'mg/L' ~ RESULT * conv_ugL_to_mgL,
+                                                                                      UNITS == 'ug/L' & converted.units == 'pg/L' ~ RESULT * conv_ugL_to_pgL))
+                                # } else {
+                                #     dplyr::mutate(converted.units = UNITS) %>% 
+                                #         dplyr::mutate(converted.result = RESULT)
+                                # }
+                        # }
+                })
+        
+        # Filter for the selected region, date range, and value range
             filtered.data <- reactive({
-                monitoring.data %>%
-                    dplyr::filter(if(input$parameter.selected == '') {PARAMETER == 'Nothing'} else {PARAMETER == input$parameter.selected}) %>% # if no parameter is selected, no data is returned (all is filtered out)
+                converted.data() %>%
+                    # dplyr::filter(if(input$parameter.selected == '') {PARAMETER == 'Nothing'} else {PARAMETER == input$parameter.selected}) %>% # if no parameter is selected, no data is returned (all is filtered out)
                     dplyr::filter(if(input$region.selected == 'All Regions' | input$region.selected == '') {TRUE} else {Region_calc == input$region.selected} ) %>% # if all regions are selected or a selection is not made, don't filter out any data (i.e. the TRUE statement); otherwise, filter for data in the selected region
                     dplyr::filter(SAMPLE_DATE >= input$dates.selected[1]) %>% # filter for the min sample date
-                    dplyr::filter(SAMPLE_DATE <= input$dates.selected[2]) # filter for the max sample date
+                    dplyr::filter(SAMPLE_DATE <= input$dates.selected[2]) %>%  # filter for the max sample date
+                    dplyr::filter(if(is.na(input$min.selected.samples)) {TRUE} else {converted.result >= input$min.selected.samples}) %>%
+                    dplyr::filter(if(is.na(input$max.selected.samples)) {TRUE} else {converted.result <= input$max.selected.samples})
             })
         
         # Calculate statistics for each site/parameter combination, and filter for the selected number of samples per site and range of results
             map.data <- reactive({
                 filtered.data() %>%
-                    dplyr::filter(if(is.na(input$min.selected)) {TRUE} else {RESULT >= input$min.selected}) %>%
-                    dplyr::filter(if(is.na(input$max.selected)) {TRUE} else {RESULT <= input$max.selected}) %>%                    
-                    dplyr::group_by(WDID) %>% 
-                    dplyr::summarize(max.value = max(RESULT, na.rm = TRUE), number.samples = n()) %>% # calculate summary statistics for each site
+                    dplyr::group_by(WDID, converted.units) %>% 
+                    dplyr::summarize(maximum.value = max(converted.result, na.rm = TRUE), 
+                                     median.value = median(converted.result, na.rm = TRUE), 
+                                     number.samples = n()) %>% # calculate summary statistics for each site
+                    dplyr::mutate(maximum.value.reported = dplyr::case_when(maximum.value == 0 ~ 'Not Detected',
+                                                                        TRUE ~ as.character(maximum.value))) %>% 
+                    dplyr::mutate(median.value.reported = dplyr::case_when(median.value == 0 ~ 'Not Detected',
+                                                                           TRUE ~ as.character(median.value))) %>% 
+                    dplyr::select(WDID, median.value, maximum.value, maximum.value.reported, median.value.reported, units = converted.units, number.samples) %>% 
                     dplyr::filter(number.samples >= input$count.selected) %>% # filter for the minimum number of samples
                     dplyr::right_join(facilities, by = 'WDID') %>% # join the calculated statistics to the more detailed facility information
-                    dplyr::filter(!is.na(max.value)) %>%  # filter out all sites where there is no summary statistic
-                    dplyr::filter(max.value != -Inf)  # -Inf is returned when all taking the max of a set of results that are all NAs
+                    dplyr::filter(!is.na(maximum.value)) %>%  # filter out all sites where there is no summary statistic
+                    dplyr::filter(maximum.value != -Inf) %>% # -Inf is returned when all taking the max of a set of results that are all NAs
+                    # filter for sites where the statistic is within the selected range
+                    dplyr::filter(if (input$statistic.selected == 'Median' & !is.na(input$min.selected.result)) {
+                        median.value >= input$min.selected.result} else {TRUE}) %>% 
+                    dplyr::filter(if (input$statistic.selected == 'Median' & !is.na(input$max.selected.result)) {
+                        median.value <= input$max.selected.result} else {TRUE}) %>% 
+                    dplyr::filter(if (input$statistic.selected == 'Maximum' & !is.na(input$min.selected.result)) {
+                        maximum.value >= input$min.selected.result} else {TRUE}) %>% 
+                    dplyr::filter(if (input$statistic.selected == 'Maximum' & !is.na(input$max.selected.result)) {
+                        maximum.value <= input$max.selected.result} else {TRUE}) 
+                    # 
+                    # 
+                    # if (input$statistic.selected == 'Median') { # filter for sites where the statistic is within the selected range
+                    #     dplyr::filter(median.value > input$min.selected.result & median.value < input$max.selected.result)
+                    # } else if (input$statistic.selected == 'Maximum') {
+                    #     dplyr::filter(maximum.value > input$min.selected.result & maximum.value < input$max.selected.result)
+                    # }
             })
             
-        # Get the facilities with samples in the filtered.data dataset
+        
+            
+        # Get the facilities with samples in the filtered.data dataset (for data download button)
             facilities.filtered <- reactive({
                 facilities %>% 
                     dplyr::filter(WDID %in% filtered.data()$WDID)
@@ -283,23 +439,38 @@
                 leaflet::colorNumeric(
                 # palette = colorRamp(c('olivedrab2', 'red3'), interpolate='spline'),
                 palette = colorRamp(c('red3', 'olivedrab2'), interpolate='spline'),
-                domain = map.data()$max.value,
+                domain = if (input$statistic.selected == 'Median') {
+                    map.data()$median.value} else if (input$statistic.selected == 'Maximum') {
+                        map.data()$maximum.value},
                 reverse = TRUE)
             })
             
         # Add the selected monitoring data ----
             observe({
                 # add the points
+                map.data.temp <- map.data()
+                range.median <- range(map.data.temp$median.value[map.data.temp$median.value > 0])
+                range.maximum <- range(map.data.temp$maximum.value[map.data.temp$maximum.value > 0])
+                min.median <- min(map.data.temp$median.value[map.data.temp$median.value > 0])
+                min.maximum <- min(map.data.temp$maximum.value[map.data.temp$maximum.value > 0])
+                input$statistic.selected
                 if (input$parameter.selected != '' & nrow(map.data()) > 0) {
                         leafletProxy('monitoring.map') %>% 
                             clearMarkers() %>%
-                            addCircleMarkers(radius = 4,
-                                             data = map.data(), # shared.map.data,
+                            addCircleMarkers(data = map.data(), # shared.map.data,
+                                             # radius = 4,
+                                             # radius = ~ if (input$statistic.selected == 'Median') {max(4,log10((10 / min.median) * median.value))} else if (input$statistic.selected == 'Maximum') {maximum.value},
+                                             radius = ~ if (input$marker.size) {
+                                                 if (input$statistic.selected == 'Median') {
+                                                     ((median.value - range.median[1]) / ((range.median[2] - range.median[1]))/0.5 + 1) * 4} else if (input$statistic.selected == 'Maximum') {
+                                                         ((maximum.value - range.maximum[1]) / ((range.maximum[2] - range.maximum[1]))/0.5 + 1) * 4}
+                                             } else {4},
                                              lat = ~FACILITY_LATITUDE,
                                              lng = ~FACILITY_LONGITUDE,
                                              stroke = TRUE, weight = 0.5, color = 'black', opacity = 1,
                                              fill = TRUE, fillOpacity = 1, 
-                                             fillColor = ~ results.leaflet.pal()(max.value),   # leaflet.pal(wq),
+                                             # fillColor = ~ results.leaflet.pal()(maximum.value),   # leaflet.pal(wq),
+                                             fillColor = ~ if (input$statistic.selected == 'Median') {results.leaflet.pal()(median.value)} else if (input$statistic.selected == 'Maximum') {results.leaflet.pal()(maximum.value)},
                                              popup = ~paste0('<b>', '<u>', 'Facility Information:', '</u>', '</b>','<br/>',
                                                              '<b>', 'WDID: ', '</b>', WDID,'<br/>',
                                                              '<b>', 'Facility Name: ', '</b>', FACILITY_NAME,'<br/>',
@@ -309,11 +480,12 @@
                                                              '<b>', 'Receiving Water: ', '</b>', RECEIVING_WATER_NAME,'<br/>',
                                                              '<br/>',
                                                              '<b>', '<u>', 'Results:', '</u>', '</b>','<br/>',
-                                                             # '<b>', 'Total Samples: ', '</b>', Total.Samples,'<br/>',
-                                                             # '<b>', 'Median: ', '</b>', median, '<br/>'),
-                                                             '<b>', 'Maximum: ', '</b>', max.value, '<br/>',
+                                                             '<b>', 'Median: ', '</b>', median.value.reported, ' ', ifelse(median.value.reported == 'Not Detected', '', units), '<br/>', # if(median.value.reported == 'Not Detected') {''} else {units}, '<br/>',
+                                                             '<b>', 'Maximum: ', '</b>', maximum.value.reported, ' ', ifelse(maximum.value.reported == 'Not Detected', '', units), '<br/>', # if(maximum.value.reported == 'Not Detected') {''} else {units}
                                                              '<b>', 'Number of Samples: ', '</b>', number.samples),
-                                             group = 'Effluent Discharge Monitorting Sites') 
+                                             group = 'Effluent Discharge Monitorting Sites'#,
+                                             #clusterOptions = markerClusterOptions()
+                                             )
                     } else {
                         leafletProxy('monitoring.map') %>%
                             clearMarkers() %>% 
@@ -350,13 +522,19 @@
             observe({
                 leafletProxy('monitoring.map') %>% 
                     clearControls() %>% 
-                    leaflet::addLegend(position = "bottomright", pal = results.leaflet.pal(), values = map.data()$max.value, title = 'Results', opacity = 1, layerId = 'results.legend')#, bins = 2)
+                    leaflet::addLegend(position = "bottomright", 
+                                       pal = results.leaflet.pal(), 
+                                       values = if (input$statistic.selected == 'Median') {map.data()$median.value} else if (input$statistic.selected == 'Maximum') {map.data()$maximum.value}, 
+                                       title = 'Results', 
+                                       opacity = 1, 
+                                       layerId = 'results.legend')#, bins = 2)
             })
         
         # Create the Data Table -----------------------------------------------------------
             output$results.table <- DT::renderDataTable(
                 #map.data(), #shared.map.data, 
-                map.data() %>% dplyr::select(-c("PERMIT_TYPE",
+                map.data() %>% 
+                    dplyr::select(-c("PERMIT_TYPE",
                                                 "FACILITY_CONTACT_FIRST_NAME", 
                                                 "FACILITY_CONTACT_LAST_NAME", 
                                                 "FACILITY_TITLE", 
@@ -364,7 +542,10 @@
                                                 "FACILITY_EMAIL", 
                                                 "CERTIFIER_BY",
                                                 "CERTIFIER_TITLE",
-                                                "CERTIFICATION_DATE")), 
+                                                "CERTIFICATION_DATE",
+                                                'median.value', 
+                                                'maximum.value')) %>% 
+                    dplyr::rename(sampling.median = median.value.reported, sampling.maximum = maximum.value.reported), 
                 extensions = c('Buttons', 'Scroller'),
                 options = list(dom = 'Bfrtip', 
                                buttons = list('colvis', list(
@@ -377,7 +558,7 @@
                                scroller = TRUE, 
                                deferRender = TRUE),
                 class = 'cell-border stripe',
-                server = FALSE, # crosstalk only works with server = FALSE
+                server = TRUE, # crosstalk only works with server = FALSE
                 rownames = FALSE
             )
             
