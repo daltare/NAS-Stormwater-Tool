@@ -131,38 +131,42 @@
                               h3('Background:'),
                               p('This draft version of the Industrial Stormwater Assessment Tool is intended to summarize statewide industrial stormwater quality 
                                 monitoring data reported to the ',
-                                tags$a(href = 'https://www.waterboards.ca.gov/','California State Water Resources Control Board'), '. It computes basic summary statistics
+                                tags$a(href = 'https://www.waterboards.ca.gov/','California State Water Resources Control Board.'), ' It computes basic summary statistics 
                                 for each regulated facility for a selected parameter, and displays the summary statistics on a map and in tabular format.'),
-                              # ('on the ', 
                               # tags$em('Sampling Summary', class = 'linkstyle', onclick = "fakeClick('Sampling Summary')"), 
                               # ' tab).'),
                               #br(),
                               hr(), #style="border: 1px solid darkgrey"),
-                              #br(),
                               h3('Instructions:'),
-                              p('In general, you will view and interact with the data through the', tags$b(em('Sampling Summary')),' tab.'), 
-                              tags$ul(
-                                  tags$li(tags$u(tags$b('Sampling Summary:')),'The panel on the left side of this tab contains a menu with inputs that can be used to filter 
-                              the data used in calculating the summary statistics displayed in the map and in the corresponding data table below the map. Use the filters in the menu to select a 
-                              parameter,  Water Board Region, and sample date range to apply in computing the summary statistics. You can also require a minimum number of samples to use in 
-                              calculating the summary statistics, and filter our sample results that fall outside of a selected range. Within the map, you can select the background 
-                              layer and toggle layers on or off, through the menu in the upper right corner of the map. You can also view and download 
-                              a tabular summary of the summary statistics in the table below the map.'),
-                                  tags$li(tags$u(tags$b('Additional Data:')), 
-                                          'Contains links to download the complete set of sampling data and facility information considered in computing the summary statistics.'),
-                                  tags$li(tags$u(tags$b('More Information:', class = 'linkstyle')), 
-                                          tags$ul(
-                                              tags$li(tags$u(tags$b('Data Sources:')),
-                                                      'Links to data sources used in this tool.'), 
-                                              tags$li(tags$u(tags$b('Application Information:')),
-                                                      'Access to the source code for this tool, and information about how to provide feedback or ask questions.')
-                                          )
-                                  )
-                              ),
+                              p('This tool displays a summary of the water quality monitoring data on an interacitve map and associated data table in the ', 
+                                tags$b(em('Sampling Summary')),
+                                ' tab, with additional supporting information contained in the remaining tabs, as described below:'),
+                              tags$ul(tags$li(tags$u(tags$b('Sampling Summary:')),
+                                              'The panel on the left side of this tab contains a menu with filters to customize the information displayed in the 
+                                              map and in the corresponding data table below the map. Use the filters in the upper portion of the menu to select a 
+                                              parameter and Water Board Region to investigate. The filters in the middle portion of the menu can optionally be used 
+                                              to filter the sample data considered in computing the summary statistics (including the range of sample dates and/or 
+                                              sample results to consider). The filters in the lower portion of the menu can be used to filter the range of 
+                                              statistical results displayed on the map and in the table (including the statistical result displayed on the map, 
+                                              the range of results for that statistic, and the mimumum number of samples), and to scale the points plotted on the 
+                                              map to the magnitude of the selected statistic. Within the map, you can select the background layer and toggle layers 
+                                              on or off (through the menu in the upper right corner of the map). You can also view and download a tabular version 
+                                              of the summary statistics in the table below the map.'),
+                                      tags$li(tags$u(tags$b('Additional Data:')), 
+                                              'Contains links to download the complete set of sampling data and facility information considered in computing the 
+                                              summary statistics.'),
+                                      tags$li(tags$u(tags$b('More Information:', class = 'linkstyle')), 
+                                              tags$ul(
+                                                  tags$li(tags$u(tags$b('Data Sources:')), 'Links to data sources used in this tool.'), 
+                                                  tags$li(tags$u(tags$b('Application Information:')), 'Access to the source code for this tool, and information 
+                                                          about how to provide feedback or ask questions.')
+                                                  )
+                                              )
+                                      ),
                               hr(), #style="border: 1px solid darkgrey"),
                               tags$a(href = 'https://github.com/CAWaterBoardDataCenter', 
                                      tags$img(src = 'data_center_logo_withText_crop_resize.png', width = '400px', height = '97px')) # , style = "border:1px solid ghostwhite"))
-                     ),
+                              ),
                  tabPanel('Sampling Summary',
                           sidebarLayout(
                               sidebarPanel( # Sidebar with inputs 
@@ -185,7 +189,6 @@
                                   numericInput(inputId = 'min.selected.result', label = 'Minimum Value:', value = NULL),
                                   numericInput(inputId = 'max.selected.result', label = 'Maximum Value:', value = NULL),
                                   sliderInput(inputId = 'count.selected', label = 'Minimum Number of Samples:', min = 0, max = 100, value = 0)#,
-                                  # textOutput('unit.reported')
                                   # hr(style="border: 1px solid darkgrey"),
                               ),
                               mainPanel( # Show map and data table
@@ -193,8 +196,7 @@
                                   leaflet::leafletOutput('monitoring.map',height = 500),
                                   hr(style="border: 3px solid darkgrey"),
                                   h5('Water Quality Monitoring Summary - Tabular Data:'),
-                                  DT::dataTableOutput('results.table')# ,
-                                  # hr(style="border: 3px solid darkgrey"),
+                                  DT::dataTableOutput('results.table')
                               )
                           )
                  ),
@@ -287,29 +289,19 @@
             
             converted.data <- reactive({
                 monitoring.data %>% 
-                    # if (input$parameter.selected == '') {
-                    #     dplyr::filter(PARAMETER == 'Nothing') # if no parameter is selected, no data is returned (all is filtered out)
-                    # } else {
-                        dplyr::filter(PARAMETER == input$parameter.selected) %>% 
-                            # if (unit.types.count() > 1) {
-                                dplyr::mutate(converted.units = unit.out()) %>% 
-                                    dplyr::mutate(converted.result = dplyr::case_when(UNITS == converted.units ~ RESULT,
-                                                                                      UNITS == 'mg/L' & converted.units == 'ug/L' ~ RESULT * conv_mgL_to_ugL,
-                                                                                      UNITS == 'ng/L' & converted.units == 'ug/L' ~ RESULT * conv_ngL_to_ugL,
-                                                                                      UNITS == 'pg/L' & converted.units == 'ug/L' ~ RESULT * conv_pgL_to_ugL,
-                                                                                      UNITS == 'ug/L' & converted.units == 'mg/L' ~ RESULT * conv_ugL_to_mgL,
-                                                                                      UNITS == 'ug/L' & converted.units == 'pg/L' ~ RESULT * conv_ugL_to_pgL))
-                                # } else {
-                                #     dplyr::mutate(converted.units = UNITS) %>% 
-                                #         dplyr::mutate(converted.result = RESULT)
-                                # }
-                        # }
+                    dplyr::filter(PARAMETER == input$parameter.selected) %>% 
+                    dplyr::mutate(converted.units = unit.out()) %>% 
+                    dplyr::mutate(converted.result = dplyr::case_when(UNITS == converted.units ~ RESULT,
+                                                                      UNITS == 'mg/L' & converted.units == 'ug/L' ~ RESULT * conv_mgL_to_ugL,
+                                                                      UNITS == 'ng/L' & converted.units == 'ug/L' ~ RESULT * conv_ngL_to_ugL,
+                                                                      UNITS == 'pg/L' & converted.units == 'ug/L' ~ RESULT * conv_pgL_to_ugL,
+                                                                      UNITS == 'ug/L' & converted.units == 'mg/L' ~ RESULT * conv_ugL_to_mgL,
+                                                                      UNITS == 'ug/L' & converted.units == 'pg/L' ~ RESULT * conv_ugL_to_pgL))
                 })
-        
+
         # Filter for the selected region, date range, and value range
             filtered.data <- reactive({
                 converted.data() %>%
-                    # dplyr::filter(if(input$parameter.selected == '') {PARAMETER == 'Nothing'} else {PARAMETER == input$parameter.selected}) %>% # if no parameter is selected, no data is returned (all is filtered out)
                     dplyr::filter(if(input$region.selected == 'All Regions' | input$region.selected == '') {TRUE} else {Region_calc == input$region.selected} ) %>% # if all regions are selected or a selection is not made, don't filter out any data (i.e. the TRUE statement); otherwise, filter for data in the selected region
                     dplyr::filter(SAMPLE_DATE >= input$dates.selected[1]) %>% # filter for the min sample date
                     dplyr::filter(SAMPLE_DATE <= input$dates.selected[2]) %>%  # filter for the max sample date
@@ -323,13 +315,13 @@
                     dplyr::group_by(WDID, converted.units) %>% 
                     dplyr::summarize(maximum.value = max(converted.result, na.rm = TRUE), 
                                      median.value = median(converted.result, na.rm = TRUE), 
-                                     number.samples = n()) %>% # calculate summary statistics for each site
+                                     samples_count = n()) %>% # calculate summary statistics for each site
                     dplyr::mutate(maximum.value.reported = dplyr::case_when(maximum.value == 0 ~ 'Not Detected',
                                                                         TRUE ~ as.character(maximum.value))) %>% 
                     dplyr::mutate(median.value.reported = dplyr::case_when(median.value == 0 ~ 'Not Detected',
                                                                            TRUE ~ as.character(median.value))) %>% 
-                    dplyr::select(WDID, median.value, maximum.value, maximum.value.reported, median.value.reported, units = converted.units, number.samples) %>% 
-                    dplyr::filter(number.samples >= input$count.selected) %>% # filter for the minimum number of samples
+                    dplyr::select(WDID, median.value, maximum.value, maximum.value.reported, median.value.reported, units = converted.units, samples_count) %>% 
+                    dplyr::filter(samples_count >= input$count.selected) %>% # filter for the minimum number of samples
                     dplyr::right_join(facilities, by = 'WDID') %>% # join the calculated statistics to the more detailed facility information
                     dplyr::filter(!is.na(maximum.value)) %>%  # filter out all sites where there is no summary statistic
                     dplyr::filter(maximum.value != -Inf) %>% # -Inf is returned when all taking the max of a set of results that are all NAs
@@ -342,13 +334,6 @@
                         maximum.value >= input$min.selected.result} else {TRUE}) %>% 
                     dplyr::filter(if (input$statistic.selected == 'Maximum' & !is.na(input$max.selected.result)) {
                         maximum.value <= input$max.selected.result} else {TRUE}) 
-                    # 
-                    # 
-                    # if (input$statistic.selected == 'Median') { # filter for sites where the statistic is within the selected range
-                    #     dplyr::filter(median.value > input$min.selected.result & median.value < input$max.selected.result)
-                    # } else if (input$statistic.selected == 'Maximum') {
-                    #     dplyr::filter(maximum.value > input$min.selected.result & maximum.value < input$max.selected.result)
-                    # }
             })
             
         
@@ -383,13 +368,6 @@
                                                      myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
                                                      })
                                                      }")
-                # Set the bounds of the map dynamically - initial view is based on the full extent of the points for the selected region, after that the map is based on the most recent bounds when a new option (standard, period, etc) is selected
-                    # isolate(if (is.null(input$monitoring.map_bounds)) {
-                    #     l <- l %>% leaflet::fitBounds(lng1 = bounds[[1]], lat1 = bounds[[2]], lng2 = bounds[[3]], lat2 = bounds[[4]])
-                    #     # l <- l %>% leaflet::fitBounds(lng1 = min(monitoring.data$Longitude, na.rm = TRUE), lat1 = min(monitoring.data$Latitude, na.rm = TRUE), lng2 = max(monitoring.data$Longitude, na.rm = TRUE), lat2 = max(monitoring.data$Latitude, na.rm = TRUE))
-                    # } else { # maintain the current view
-                    #     l <- l %>% leaflet::setView(lng = mean(c(input$monitoring.map_bounds$west, input$monitoring.map_bounds$east)), lat = mean(c(input$monitoring.map_bounds$north, input$monitoring.map_bounds$south)), zoom = input$monitoring.map_zoom)                                
-                    # })
                 # center map on selected California
                     l <- l %>% leaflet::fitBounds(round(CA.bounds[[1]], 4),
                                                   round(CA.bounds[[2]], 4),
@@ -412,12 +390,6 @@
                 # create a button to re-center the map
                     l <- l %>% leaflet::addEasyButton(leaflet::easyButton(
                         icon="fa-globe", title="Center Map on California",
-                        # fit to data points
-                        # onClick=leaflet::JS(paste0('function(btn, map){ map.fitBounds([[',
-                        #                   min(map.data$Latitude, na.rm = TRUE), ', ',
-                        #                   min(map.data$Longitude, na.rm = TRUE), '],[',
-                        #                   max(map.data$Latitude, na.rm = TRUE), ', ',
-                        #                   max(map.data$Longitude, na.rm = TRUE), ']]); }'))))
                         # fit to RB boundary
                         onClick=leaflet::JS(paste0('function(btn, map){ map.fitBounds([[',
                                                    round(CA.bounds[[2]],4), ', ',
@@ -482,7 +454,7 @@
                                                              '<b>', '<u>', 'Results:', '</u>', '</b>','<br/>',
                                                              '<b>', 'Median: ', '</b>', median.value.reported, ' ', ifelse(median.value.reported == 'Not Detected', '', units), '<br/>', # if(median.value.reported == 'Not Detected') {''} else {units}, '<br/>',
                                                              '<b>', 'Maximum: ', '</b>', maximum.value.reported, ' ', ifelse(maximum.value.reported == 'Not Detected', '', units), '<br/>', # if(maximum.value.reported == 'Not Detected') {''} else {units}
-                                                             '<b>', 'Number of Samples: ', '</b>', number.samples),
+                                                             '<b>', 'Number of Samples: ', '</b>', samples_count),
                                              group = 'Effluent Discharge Monitorting Sites'#,
                                              #clusterOptions = markerClusterOptions()
                                              )
@@ -545,7 +517,8 @@
                                                 "CERTIFICATION_DATE",
                                                 'median.value', 
                                                 'maximum.value')) %>% 
-                    dplyr::rename(sampling.median = median.value.reported, sampling.maximum = maximum.value.reported), 
+                    dplyr::rename(sampling_median = median.value.reported, sampling_maximum = maximum.value.reported) %>% 
+                    dplyr::rename_all(toupper), 
                 extensions = c('Buttons', 'Scroller'),
                 options = list(dom = 'Bfrtip', 
                                buttons = list('colvis', list(
