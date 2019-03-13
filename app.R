@@ -5,23 +5,25 @@
     
 # Read data into R
     # monitoring data
-        # mon.temp <- tempfile()
-        # download.file(url = 'https://data.ca.gov/node/2176/download', destfile = mon.temp, method = 'libcurl')
-        # monitoring.data <- readr::read_csv(file = mon.temp)
-        # unlink(mon.temp)
-        # rm(mon.temp)
-        # names(monitoring.data) <- make.names(names(monitoring.data))
+        mon.temp <- tempfile()
+        download.file(url = 'https://data.ca.gov/node/2176/download', destfile = mon.temp, method = 'libcurl')
+        monitoring.data <- readr::read_csv(file = mon.temp)
+        unlink(mon.temp)
+        rm(mon.temp)
+        names(monitoring.data) <- make.names(names(monitoring.data))
         # read from saved file
-            monitoring.data <- readr::read_csv(file = 'data/Industrial_Ad_Hoc_Reports_-_Parameter_Data_2018-07-19.csv')
+            # monitoring.data <- readr::read_csv(file = unz('data/Industrial_Ad_Hoc_Reports_-_Parameter_Data_2019-03-12.zip',
+            #                                               'Industrial_Ad_Hoc_Reports_-_Parameter_Data_2019-03-12.csv'))
     # facilities
-        # fac.temp <- tempfile()
-        # download.file(url = 'https://data.ca.gov/node/2171/download', destfile = fac.temp, method = 'libcurl')
-        # facilities <- readr::read_csv(file = fac.temp)
-        # unlink(fac.temp)
-        # rm(fac.temp)
-        # names(facilities) <- make.names(names(facilities))
+        fac.temp <- tempfile()
+        download.file(url = 'https://data.ca.gov/node/2171/download', destfile = fac.temp, method = 'libcurl')
+        facilities <- readr::read_csv(file = fac.temp)
+        unlink(fac.temp)
+        rm(fac.temp)
+        names(facilities) <- make.names(names(facilities))
         # read from saved file
-            facilities <- readr::read_csv(file = 'data/Industrial_Application_Specific_Data_2018-07-19.csv')
+            # facilities <- readr::read_csv(file = unz('data/Industrial_Application_Specific_Data_2019-03-12.zip',
+            #                                          'Industrial_Application_Specific_Data_2019-03-12.csv'))
         
     # filter the monitoring data so that it only includes effluent data
         monitoring.data <- monitoring.data %>% dplyr::filter(MONITORING_LOCATION_TYPE == 'Effluent Monitoring')
@@ -531,7 +533,7 @@
                                scroller = TRUE, 
                                deferRender = TRUE),
                 class = 'cell-border stripe',
-                server = TRUE, # crosstalk only works with server = FALSE
+                server = FALSE, # crosstalk only works with server = FALSE
                 rownames = FALSE
             )
             
