@@ -5,21 +5,27 @@
     
 # Read data into R
     # monitoring data
-        mon.temp <- tempfile()
-        download.file(url = 'https://data.ca.gov/node/2176/download', destfile = mon.temp, method = 'libcurl')
-        monitoring.data <- readr::read_csv(file = mon.temp)
-        unlink(mon.temp)
-        rm(mon.temp)
+        # mon.temp <- tempfile()
+        # download.file(url = 'https://data.ca.gov/node/2176/download', destfile = mon.temp, method = 'libcurl')
+        # monitoring.data <- readr::read_csv(file = mon.temp)
+        # unlink(mon.temp)
+        # rm(mon.temp)
+        monitoring_data_id <- '7871e8fe-576d-4940-acdf-eca0b399c1aa'
+        ckan_resource_MonData <- ckanr::resource_show(url = 'https://data.ca.gov', id = monitoring_data_id, as = 'table') # resource
+        monitoring.data <- readr::read_csv(file = ckan_resource_MonData$url, guess_max = 50000)
         names(monitoring.data) <- make.names(names(monitoring.data))
         # read from saved file
             # monitoring.data <- readr::read_csv(file = unz('data/Industrial_Ad_Hoc_Reports_-_Parameter_Data_2019-03-12.zip',
             #                                               'Industrial_Ad_Hoc_Reports_-_Parameter_Data_2019-03-12.csv'))
     # facilities
-        fac.temp <- tempfile()
-        download.file(url = 'https://data.ca.gov/node/2171/download', destfile = fac.temp, method = 'libcurl')
-        facilities <- readr::read_csv(file = fac.temp)
-        unlink(fac.temp)
-        rm(fac.temp)
+        # fac.temp <- tempfile()
+        # download.file(url = 'https://data.ca.gov/node/2171/download', destfile = fac.temp, method = 'libcurl')
+        # facilities <- readr::read_csv(file = fac.temp)
+        # unlink(fac.temp)
+        # rm(fac.temp)
+        facility_data_id <- '33e69394-83ec-4872-b644-b9f494de1824'
+        ckan_resource_FacData <- ckanr::resource_show(url = 'https://data.ca.gov', id = facility_data_id, as = 'table') # resource
+        facilities <- readr::read_csv(file = ckan_resource_FacData$url, guess_max = 50000)
         names(facilities) <- make.names(names(facilities))
         # read from saved file
             # facilities <- readr::read_csv(file = unz('data/Industrial_Application_Specific_Data_2019-03-12.zip',
