@@ -1,7 +1,7 @@
 This (draft) tool is intended to analyze effluent water quality monitoring data from industrial stormwater discharge facilities that report to the [California State Water Resources Control Board](https://www.waterboards.ca.gov/) (the tool draws from the data stored in the Waterboard's [SMARTS](https://smarts.waterboards.ca.gov/smarts/faces/SwSmartsLogin.xhtml) database). The tool calculates basic summary statistics for a selected parameter at each facility, and plots the results on an interactive map. Users can also download the tabular dataset of summary statistics, as well as the disaggregated sampling data used to calculate the summary statistics.
 
 ## Application Location
-The application is available at: https://daltare.shinyapps.io/Stormwater-Assessment-Tool/
+The application is available at: https://cawaterdatadive.shinyapps.io/Stormwater-Assessment-Tool/
 
 ## Data Sources
 #### Stormwater Monitoring and Facility Information

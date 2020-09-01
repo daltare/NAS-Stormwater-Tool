@@ -2,6 +2,15 @@
     library(shiny)    
     library(leaflet)
     library(magrittr)
+    library(dplyr)
+    library(readr)
+    library(ckanr)
+    library(lubridate)
+    library(sf)
+    library(leaflet)
+    library(DT)
+    library(crosstalk)
+    library(htmlwidgets)
     
 # Read data into R
     # monitoring data
@@ -35,7 +44,8 @@
         monitoring.data <- monitoring.data %>% dplyr::filter(MONITORING_LOCATION_TYPE == 'Effluent Monitoring')
         
     # convert date field to a date class
-        monitoring.data <- monitoring.data %>% dplyr::mutate(SAMPLE_DATE = lubridate::mdy(SAMPLE_DATE))
+        # monitoring.data <- monitoring.data %>% dplyr::mutate(SAMPLE_DATE = lubridate::mdy(SAMPLE_DATE))
+        monitoring.data <- monitoring.data %>% dplyr::mutate(SAMPLE_DATE = lubridate::ymd(SAMPLE_DATE))
     
     # filter for reasonable dates (since the year 2000 or later, but nothing past today's date)
         monitoring.data <- monitoring.data %>% dplyr::filter(SAMPLE_DATE >= 2000/01/01 & SAMPLE_DATE <= Sys.time())
@@ -265,7 +275,9 @@
                 if (input$parameter.selected == '') {
                     as.character(NA)
                 } else {
-                    as.character((unit.conversions %>% dplyr::filter(PARAMETER == input$parameter.selected) %>% dplyr::select(max.unit))[1,1])
+                    as.character((unit.conversions %>% 
+                                      dplyr::filter(PARAMETER == input$parameter.selected) %>% 
+                                      dplyr::select(max.unit))[1,1])
                 }
             })
             
